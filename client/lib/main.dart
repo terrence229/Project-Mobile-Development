@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'screens/landing_route.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: Container(),
-      ),
-    ),
-  );
+// Startingpoint of app, do not touch!
+void main() => runApp(MainApp());
+
+class MainApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LandingRoute(),
+    );
+  }
 }
