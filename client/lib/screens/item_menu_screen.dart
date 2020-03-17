@@ -46,13 +46,13 @@ class BuildItemCard extends StatelessWidget{
   BuildItemCard({
     Key key,
     this.photo,
-    this.title,
-    this.subtitle,
+    this.itemName,
+    this.description,
   }): super (key: key);
 
   final Widget photo;
-  final String title;
-  final String subtitle;
+  final String itemName;
+  final String description;
 
   @override
   Widget build(BuildContext context){
@@ -62,9 +62,9 @@ class BuildItemCard extends StatelessWidget{
             children: [
               ListTile(
                   leading: photo,
-                  title: Text(title,
+                  title: Text(itemName,
                       style: TextStyle(fontWeight: FontWeight.w500)),
-                  subtitle: Text(subtitle),
+                  subtitle: Text(description),
                   trailing: Icon(Icons.arrow_forward_ios)
                 ),
               Divider(),
@@ -88,6 +88,16 @@ class MyStatelessWidget extends StatelessWidget{
           restaurantName: 'Burger Bar',
           workingHours: '09:00 - 21:00',
           walkingDistance:'10 min loopafstand',
+        ),
+        BuildItemCard(
+          photo: Image.asset('assets/Burger_met_Friet.jpg'),
+          itemName: 'Hamburger met friet',
+          description: 'Beef, sla, tomaat, augurk, huisgemaakte burgersaus, huisgemaakte friet',
+        ),
+        BuildItemCard(
+          photo: Image.asset('assets/Texas_Burger.jpg'),
+          itemName: 'Texas Burger',
+          description: 'Beef, sla, bacon, augurk, pittege huisgemaakte burgersaus, huisgemaakte friet',
         )
       ],
     );
