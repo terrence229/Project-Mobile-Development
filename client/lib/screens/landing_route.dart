@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'order_route.dart';
-
+import 'register_route.dart';
 /**
  * Splash screen
  * This page only displays the title and buttons:w
@@ -52,6 +52,32 @@ class LandingRoute extends StatelessWidget {
               child: Text(
                 // Button text
                 'Quick Order',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            MaterialButton(
+              minWidth: 300.0, // Hardcoded size, fix later!
+              color: Colors.black,
+              shape: RoundedRectangleBorder(
+                // Make button rounded
+                borderRadius: new BorderRadius.circular(50.0),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return RegisterRoute(); // Display new route
+                    },
+                  ),
+                );
+              },
+              child: Text(
+                // Button text
+                'Register',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
