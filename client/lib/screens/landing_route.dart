@@ -31,12 +31,13 @@ class LandingRoute extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 500) // Spacer between title & button,
+            SizedBox(height: 500), // Spacer between title & button,
             MaterialButton(
               minWidth: 300.0, // Hardcoded size, fix later!
               color: Colors.black,
-              shape: RoundedRectangleBorder( // Make button rounded
-                  borderRadius: new BorderRadius.circular(50.0),
+              shape: RoundedRectangleBorder(
+                // Make button rounded
+                borderRadius: new BorderRadius.circular(50.0),
               ),
               onPressed: () {
                 Navigator.push(
@@ -48,7 +49,8 @@ class LandingRoute extends StatelessWidget {
                   ),
                 );
               },
-	      child: Text( // Button text
+              child: Text(
+                // Button text
                 'Quick Order',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
