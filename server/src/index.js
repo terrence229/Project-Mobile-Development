@@ -1,16 +1,16 @@
 require('dotenv').config();
+//TODO: require mongoose
 const http = require('http');
 const express = require('express');
 
+const userRouter = require('./routers/user.router');
 
 const app = express();
 const port = process.env.PORT;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+app.use(express.json());
+app.use(userRouter);
+
 
 app.listen(port, () => {
   console.log('Server is up on port ' + port);
