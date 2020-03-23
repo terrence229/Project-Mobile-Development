@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'order_route.dart';
+import 'item_menu_route.dart';
 
 /**
  * Splash screen
@@ -19,7 +19,7 @@ class LandingRoute extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return OrderRoute();
+                  return ItemMenu();
                 },
               ),
             );
