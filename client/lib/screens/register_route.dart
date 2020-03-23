@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:requests/requests.dart';
 
 /**
  * Register page
@@ -25,7 +26,7 @@ class RegisterRoute extends StatelessWidget {
                 borderRadius: new BorderRadius.circular(50.0),
               ),
               onPressed: () {
-              testGet();  
+              	testGet();  
               },
               child: Text(
                 // Button text
@@ -43,13 +44,9 @@ class RegisterRoute extends StatelessWidget {
   }
 }
 
-// TODO: fix handshake exception
+// Test get
 testGet() async {
-  final response = await http.get('https://localhost:1337/test');
-
-  if (response.statusCode == 200) {
-	 return 1;
-  } else {
-    throw Exception('Failed to load album');
-  }
+	var r = await Requests.get("http://localhost:1337/test");
+	r.raiseForStatus();
+	String body = r.content();
 }

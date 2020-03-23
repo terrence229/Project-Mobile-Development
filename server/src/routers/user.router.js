@@ -5,7 +5,7 @@ const router = new express.Router();
 router.get('/test', async(req, res) => {
   console.log("TEST GET");	
 	res.status(200)
-		.send();
+		.send('Hello, World!');
 });
 
 module.exports = router;
