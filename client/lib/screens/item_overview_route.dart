@@ -15,17 +15,31 @@ class ItemOverview extends StatelessWidget{
   }
 }
 
-/*class BuildItemInfo extends StatelessWidget{
-  final Widget photo= BuildItemCard.photo;
+class BuildItemInfo extends StatelessWidget{
+/*  final Widget photo= BuildItemCard.photo;
   final String itemName= BuildItemCard.itemName;
   final String description= BuildItemCard.description;
   final String restaurantName= BuildRestaurantCard.restaurantName;
   final Float price= 0;
-  final Float amount= 0;
+  final Float amount= 0;*/
 
   @override
   Widget build(BuildContext context) {
-
+    return Center(
+      child: Card(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                leading: Text('Hi'),
+                title: Text('Dit'),
+                subtitle: Text('Is een nieuw'),
+                trailing: Text('Scherm'),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
-
-}*/
+}

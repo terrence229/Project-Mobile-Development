@@ -90,8 +90,13 @@ class BuildRestaurantCard extends StatelessWidget{
   }
 }
 
-class BuildItemCard extends StatelessWidget {
-  BuildItemCard({
+/*class BuildItemCard extends StatefulWidget{
+  @override
+  BuildItemCardState createState() => BuildItemCardState();
+}*/
+
+class BuildItemCardState extends StatelessWidget {
+  BuildItemCardState({
     Key key,
     this.photo,
     this.itemName,
@@ -138,17 +143,17 @@ class BuildItemCard extends StatelessWidget {
                               //alignment: Alignment.topCenter,
                               icon: Icon(Icons.arrow_forward_ios),
                               color: Colors.white,
-                              onPressed: (){
+                              onPressed: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context){
-                                          return ItemOverview();
-                                        }
+                                      builder: (context) {
+                                        return ItemOverview();
+                                      },
                                     )
                                 );
-                              },
-                            ),
+                              }
+                            )
                           ],
                         )
                     )
@@ -177,13 +182,13 @@ class BuildScreen extends StatelessWidget{
           closingHours: '21:00',
           walkingDistance:'2.5km afstand',
         ),
-        BuildItemCard(
+        BuildItemCardState(
           photo: Image.asset('assets/Burger_met_Friet.jpg'),
           itemName: 'Hamburger met friet',
           description: 'Beef, sla, tomaat, augurk, huisgemaakte burgersaus, huisgemaakte friet',
           price: 10,
         ),
-        BuildItemCard(
+        BuildItemCardState(
           photo: Image.asset('assets/Texas_Burger.jpg'),
           itemName: 'Texas Burger',
           description: 'Beef, sla, bacon, augurk, pittige huisgemaakte burgersaus, huisgemaakte friet',
