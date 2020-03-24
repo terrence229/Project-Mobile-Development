@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
+var mongoDB = 'mongodb://127.0.0.1:27017/woost';
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(mongoDB, {
 	usernewUrlParser: true,
-	useCreateIndex: true,
-	useFindAndModify: false,
 })
 
 

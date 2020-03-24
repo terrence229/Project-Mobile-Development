@@ -111,3 +111,5 @@ typings/
 .dynamodb/
 
 .DS_Store
+server/src/models/.user.model.js.swp
+server/src/.index.js.swp

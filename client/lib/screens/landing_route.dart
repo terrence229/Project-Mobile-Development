@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'order_route.dart';
 import 'register_route.dart';
+
 /**
  * Splash screen
  * This page only displays the title and buttons:w
