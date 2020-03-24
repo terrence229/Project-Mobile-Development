@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'order_route.dart';
+import 'map_route.dart' ;
 
 /**
  * Splash screen
@@ -44,7 +45,7 @@ class LandingRoute extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return OrderRoute(); // Display new route
+                      return MyApp(); // Display new route
                     },
                   ),
                 );
