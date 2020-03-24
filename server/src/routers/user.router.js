@@ -11,10 +11,11 @@ router.get('/test', async(req, res) => {
 		.send('Hello, World!');
 });
 
-// Test POST routei
-// TODO: make post
-router.post('/testpost', async(req, res) => {
-  console.log("TEST POST");
+/**
+ * Register route for user
+ * TODO: add security
+ */
+router.post('/register', async(req, res) => {
 	console.log(req.body);
 	const newUser = new User(req.body);
 	try {
@@ -28,5 +29,21 @@ router.post('/testpost', async(req, res) => {
 	}
 });
 
-
+/**
+ * Login route for user
+ * TODO: doesn't work yet!
+ */
+router.post('/login', async(req, res) => {
+	console.log(req.body);
+	const newUser = new User(req.body);
+	try {
+		await newUser.save();
+		res.status(201)
+			.header('Access-Control-Allow-Origin', '*')
+			.send();
+	} catch (error) {
+		res.status(400)
+			.send(error);
+	}
+});
 module.exports = router;

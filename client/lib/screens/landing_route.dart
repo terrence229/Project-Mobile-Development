@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'order_route.dart';
 import 'register_route.dart';
+import 'login_route.dart';
 import 'item_menu_route.dart';
 
 /**
@@ -54,6 +54,32 @@ class LandingRoute extends StatelessWidget {
               child: Text(
                 // Button text
                 'Quick Order',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            MaterialButton(
+              minWidth: 300.0, // Hardcoded size, fix later!
+              color: Colors.black,
+              shape: RoundedRectangleBorder(
+                // Make button rounded
+                borderRadius: new BorderRadius.circular(50.0),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginRoute(); // Display new route
+                    },
+                  ),
+                );
+              },
+              child: Text(
+                // Button text
+                'Login',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,

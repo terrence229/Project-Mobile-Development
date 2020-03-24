@@ -4,9 +4,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 
-class RegisterRoute extends StatefulWidget {
+class LoginRoute extends StatefulWidget {
 	@override
-	_RegisterRouteState createState() => _RegisterRouteState();
+	_LoginRouteState createState() => _LoginRouteState();
 }
 
 //TODO: make secure & add validation
@@ -14,12 +14,12 @@ String nameText;
 String passwordText;
 
 /// Register Page
-class _RegisterRouteState extends State<RegisterRoute> {
+class _LoginRouteState extends State<LoginRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register Route"),
+        title: Text("Login Route"),
       ),
       body: Center(
         child: Column(
@@ -43,13 +43,6 @@ class _RegisterRouteState extends State<RegisterRoute> {
 								passwordText = password;
 							},
             ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Repeat password',
-              ),
-            ),
             SizedBox(height: 500), // Spacer between input and button
             MaterialButton(
               minWidth: 300.0, // Hardcoded size, fix later!
@@ -59,11 +52,11 @@ class _RegisterRouteState extends State<RegisterRoute> {
                 borderRadius: new BorderRadius.circular(50.0),
               ),
               onPressed: () {
-                registerPost();
+                loginPost();
               },
               child: Text(
                 // Button text
-                'Register',
+                'Login',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -79,11 +72,11 @@ class _RegisterRouteState extends State<RegisterRoute> {
 
 
 /// Posts register values to backend
-registerPost() async {
+loginPost() async {
   // r = response object
 	print("VALUE: $nameText");
   var r = await Requests.post(
-		"http://localhost:1337/register",
+		"http://localhost:1337/login",
      body: { // placeholder values
       	"name": "$nameText",
 				"password": "$passwordText"
