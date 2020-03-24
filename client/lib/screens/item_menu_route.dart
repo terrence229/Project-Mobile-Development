@@ -31,6 +31,7 @@ class BuildRestaurantCard extends StatelessWidget{
   final String closingHours;
   final String walkingDistance;
 
+
   @override
   Widget build(BuildContext context){
     return Center(
@@ -51,9 +52,9 @@ class BuildRestaurantCard extends StatelessWidget{
                                 text: TextSpan(
                                     style: DefaultTextStyle.of(context).style,
                                     children: <TextSpan>[
-                                        TextSpan(text: openingHours.toString()),
+                                        TextSpan(text: openingHours),
                                         TextSpan(text: ' - '),
-                                        TextSpan(text: closingHours.toString())
+                                        TextSpan(text: closingHours)
                                       ]
                                   )
                               ),
@@ -90,26 +91,54 @@ class BuildRestaurantCard extends StatelessWidget{
   }
 }
 
-/*class BuildItemCard extends StatefulWidget{
-  @override
-  BuildItemCardState createState() => BuildItemCardState();
-}*/
-
-class BuildItemCardState extends StatelessWidget {
-  BuildItemCardState({
-    Key key,
+class BuildItemCard extends StatefulWidget{
+  BuildItemCard({
     this.photo,
     this.itemName,
     this.description,
     this.price,
-  }) : super (key: key);
+    this.amount,
+  });
 
-  final Widget photo;
+  final Image photo;
   final String itemName;
   final String description;
   final double price;
+  int amount;
 
-  static int amount;
+  @override
+  State<StatefulWidget> createState(){
+    return BuildItemCardState();
+  }
+}
+
+class BuildItemCardState extends State<BuildItemCard>{
+  void addItem(){
+    setState(() {
+      widget.amount++;
+    });
+  }
+
+  void changePage() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context)
+            {
+              return ItemOverview();
+            }
+        )
+    );
+  }
+
+  void sentInfo(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => GetItemValues(widget.photo, widget.itemName, widget.description, widget.price, widget.amount)
+        )
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +148,10 @@ class BuildItemCardState extends StatelessWidget {
             child: Column(
               children: [
                 ListTile(
-                    leading: photo,
-                    title: Text(itemName,
+                    leading: widget.photo,
+                    title: Text(widget.itemName,
                         style: TextStyle(fontWeight: FontWeight.w500)),
-                    subtitle: Text(description),
+                    subtitle: Text(widget.description),
                     trailing:Container(
                         height: 100,
                         color: Colors.yellow,
@@ -134,7 +163,7 @@ class BuildItemCardState extends StatelessWidget {
                                       style: DefaultTextStyle.of(context).style,
                                       children: <TextSpan>[
                                         TextSpan(text: '€'),
-                                        TextSpan(text: price.toString())
+                                        TextSpan(text: widget.price.toString())
                                       ]
                                   )
                               ),
@@ -143,16 +172,11 @@ class BuildItemCardState extends StatelessWidget {
                               //alignment: Alignment.topCenter,
                               icon: Icon(Icons.arrow_forward_ios),
                               color: Colors.white,
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return ItemOverview();
-                                      },
-                                    )
-                                );
-                              }
+                              onPressed: (){
+                                addItem();
+                                sentInfo();
+                                changePage();
+                              },
                             )
                           ],
                         )
@@ -182,17 +206,19 @@ class BuildScreen extends StatelessWidget{
           closingHours: '21:00',
           walkingDistance:'2.5km afstand',
         ),
-        BuildItemCardState(
+        BuildItemCard(
           photo: Image.asset('assets/Burger_met_Friet.jpg'),
           itemName: 'Hamburger met friet',
           description: 'Beef, sla, tomaat, augurk, huisgemaakte burgersaus, huisgemaakte friet',
           price: 10,
+          amount: 0,
         ),
-        BuildItemCardState(
+        BuildItemCard(
           photo: Image.asset('assets/Texas_Burger.jpg'),
           itemName: 'Texas Burger',
-          description: 'Beef, sla, bacon, augurk, pittige huisgemaakte burgersaus, huisgemaakte friet',
-          price: 10.5,
+          description: 'Beef, sla, bacon, tomaat, augurk, pittige huisgemaakte burgersaus, huisgemaakte friet',
+          price: 11.5,
+          amount: 0,
         )
       ],
     );
