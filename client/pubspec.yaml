@@ -18,10 +18,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  fonts:
-  - family: Roboto     
-    fonts:
-    - asset: build/flutter_assets/fonts/Roboto-Regular.ttf
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
