@@ -31,7 +31,6 @@ class BuildRestaurantCard extends StatelessWidget{
   final String closingHours;
   final String walkingDistance;
 
-
   @override
   Widget build(BuildContext context){
     return Center(
@@ -52,9 +51,7 @@ class BuildRestaurantCard extends StatelessWidget{
                                 text: TextSpan(
                                     style: DefaultTextStyle.of(context).style,
                                     children: <TextSpan>[
-                                        TextSpan(text: openingHours),
-                                        TextSpan(text: ' - '),
-                                        TextSpan(text: closingHours)
+                                        TextSpan(text: openingHours+ ' - '+ closingHours),
                                       ]
                                   )
                               ),
@@ -72,14 +69,6 @@ class BuildRestaurantCard extends StatelessWidget{
                   IconButton(
                     icon: Icon(Icons.star_border),
                     onPressed: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context){
-                                return ItemOverview();
-                              }
-                          )
-                      );
                     },
                   )
               ),
@@ -119,23 +108,11 @@ class BuildItemCardState extends State<BuildItemCard>{
     });
   }
 
-  void changePage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context)
-            {
-              return ItemOverview();
-            }
-        )
-    );
-  }
-
   void sentInfo(){
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => GetItemValues(widget.photo, widget.itemName, widget.description, widget.price, widget.amount)
+          builder: (context) => GetItemValues(widget.photo, widget.itemName,  widget.price, widget.amount)
         )
     );
   }
@@ -175,7 +152,7 @@ class BuildItemCardState extends State<BuildItemCard>{
                               onPressed: (){
                                 addItem();
                                 sentInfo();
-                                changePage();
+                                //changePage();
                               },
                             )
                           ],
@@ -219,6 +196,26 @@ class BuildScreen extends StatelessWidget{
           description: 'Beef, sla, bacon, tomaat, augurk, pittige huisgemaakte burgersaus, huisgemaakte friet',
           price: 11.5,
           amount: 0,
+        ),
+        Container(
+          child: MaterialButton(
+            minWidth: 300.0, // Hardcoded size, fix later!
+            color: Colors.yellow,
+            shape: RoundedRectangleBorder(
+              // Make button rounded
+              borderRadius: new BorderRadius.circular(50.0),
+            ),
+            onPressed: () {
+            },
+            child: Text(
+              // Button text
+              'Volgende',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
         )
       ],
     );
