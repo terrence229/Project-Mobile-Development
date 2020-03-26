@@ -16,7 +16,6 @@ router.get('/test', async(req, res) => {
  * TODO: add security
  */
 router.post('/register', async(req, res) => {
-	console.log(req.body);
 	const newUser = new User(req.body);
 	try {
 		await newUser.save();
@@ -31,19 +30,21 @@ router.post('/register', async(req, res) => {
 
 /**
  * Login route for user
- * TODO: doesn't work yet!
  */
 router.post('/login', async(req, res) => {
-	console.log(req.body);
-	const newUser = new User(req.body);
-	try {
-		await newUser.save();
-		res.status(201)
-			.header('Access-Control-Allow-Origin', '*')
-			.send();
-	} catch (error) {
-		res.status(400)
-			.send(error);
-	}
+  try {
+    console.log(req.body.email);
+    const user = await User.getUserByEmail(req.body.email, req.body.password);
+    const userId = await User.getUserIdByEmail(req.body.email);
+    const token = await user.getJWT();
+
+    res.status(200)
+        .header('Access-Control-Allow-Origin', '*')
+        .send({token, userId});
+  } catch (e) {
+    res.status(400)
+        .header('Access-Control-Allow-Origin', '*')
+        .send();
+  }
 });
 module.exports = router;

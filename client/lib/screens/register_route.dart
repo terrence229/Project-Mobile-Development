@@ -4,14 +4,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 import 'package:woosttogo/components/navigator_button.dart';
+import 'package:woosttogo/services/networking.dart';
 
 class RegisterRoute extends StatefulWidget {
   @override
   _RegisterRouteState createState() => _RegisterRouteState();
 }
 
-//TODO: make secure & add validation
+//TODO: make secure & add client-side validation
 String nameText;
+String emailText;
 String passwordText;
 
 /// Register Page
@@ -28,33 +30,41 @@ class _RegisterRouteState extends State<RegisterRoute> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Email',
+                labelText: 'Name',
               ),
               onChanged: (text) {
                 nameText = text;
               },
             ),
             TextField(
-              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Password',
+                labelText: 'E-mail',
               ),
-              onChanged: (password) {
-                passwordText = password;
+              onChanged: (email) {
+                emailText = email;
               },
             ),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Repeat password',
+                labelText: 'password',
               ),
+              onChanged: (password) {
+                passwordText = password;
+              },
             ),
             SizedBox(height: 100), // Spacer between input and button
             NavigatorButton(
                 onPressed: () {
-                  registerPost();
+                  print(nameText);
+                  setState(
+                    () {
+                      NetworkHelper()
+                          .registerPost(nameText, emailText, passwordText);
+                    },
+                  );
                 },
                 buttonTitle: "Register"),
           ],
@@ -62,18 +72,4 @@ class _RegisterRouteState extends State<RegisterRoute> {
       ),
     );
   }
-}
-
-/// Posts register values to backend
-registerPost() async {
-  // r = response object
-  print("VALUE: $nameText");
-  var r = await Requests.post("http://localhost:1337/register",
-      body: {
-        // placeholder values
-        "name": "$nameText",
-        "password": "$passwordText"
-      },
-      bodyEncoding: RequestBodyEncoding.JSON); // format to send
-  r.raiseForStatus();
 }

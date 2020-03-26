@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 import 'package:woosttogo/components/navigator_button.dart';
+import 'package:woosttogo/services/networking.dart';
 
 class LoginRoute extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class LoginRoute extends StatefulWidget {
 }
 
 //TODO: make secure & add validation
-String nameText;
+String emailText;
 String passwordText;
 
 /// Register Page
@@ -30,8 +31,8 @@ class _LoginRouteState extends State<LoginRoute> {
                 border: OutlineInputBorder(),
                 labelText: 'Email',
               ),
-              onChanged: (text) {
-                nameText = text;
+              onChanged: (email) {
+                emailText = email;
               },
             ),
             TextField(
@@ -46,28 +47,14 @@ class _LoginRouteState extends State<LoginRoute> {
             ),
             SizedBox(height: 100), // Spacer between input and button
             NavigatorButton(
-              onPressed: () {
-                loginPost();
-              },
               buttonTitle: "Login",
+              onPressed: () {
+               NetworkHelper().loginPost(emailText, passwordText); 
+              },
             ),
           ],
         ),
       ),
     );
   }
-}
-
-/// Posts register values to backend
-loginPost() async {
-  // r = response object
-  print("VALUE: $nameText");
-  var r = await Requests.post("http://localhost:1337/login",
-      body: {
-        // placeholder values
-        "name": "$nameText",
-        "password": "$passwordText"
-      },
-      bodyEncoding: RequestBodyEncoding.JSON); // format to send
-  r.raiseForStatus();
 }
