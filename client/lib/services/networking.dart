@@ -1,21 +1,22 @@
 import 'dart:io';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 /// Used to get data from backend
+/// All requests are sent using the application/json header
 class NetworkHelper {
   /// REST API URL
   ///
   /// If you get weird errors on Android, change localhost to
   /// your own local IP adress.
   /// info: https://github.com/hillelcoren/flutter-redux-starter/issues/16
-  final String registerURL = "http://localhost:1337/register";
-  final String loginURL = "http://localhost:1337/login";
+  final String URL = "http://localhost:1337";
+  final storage = FlutterSecureStorage();
 
   /// Sends a login POST request to the backend
   /// Should return a JWT
-  Future loginPost(email, password) async {
+  Future<String> loginPost(email, password) async {
     Map loginData = {
       'email': '$email',
       'password': '$password',
@@ -23,37 +24,32 @@ class NetworkHelper {
 
     var body = json.encode(loginData);
 
-    http.Response response = await http.post(loginURL,
+    http.Response response = await http.post("$URL/login",
         headers: {HttpHeaders.contentTypeHeader: "application/json"},
         body: body);
 
     if (response.statusCode == 200) {
-      String data = response.body;
-      print(data); // Should print JWT to console!
-      return jsonDecode(data);
+      return response.body; // Contains the JWT
     } else {
       print(response.statusCode);
     }
   }
 
-
   /// Sends a register POST request to the backend
-  Future registerPost(name, email, password) async {
+  Future<String> registerPost(email, password) async {
     Map registerData = {
-      'name': '$name',
-      'email' : '$email',
+      'email': '$email',
       'password': '$password',
     };
 
     var body = json.encode(registerData);
 
-    http.Response response = await http.post(registerURL,
+    http.Response response = await http.post("$URL/register",
         headers: {HttpHeaders.contentTypeHeader: "application/json"},
         body: body);
 
     if (response.statusCode == 201) {
-      String data = response.body;
-      return jsonDecode(data);
+      return response.body; // Contains the JW
     } else {
       print(response.statusCode);
     }

@@ -1,10 +1,7 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:requests/requests.dart';
 import 'package:woosttogo/components/navigator_button.dart';
 import 'package:woosttogo/services/networking.dart';
+import 'package:woosttogo/screens/login_route.dart';
 
 class RegisterRoute extends StatefulWidget {
   @override
@@ -30,15 +27,6 @@ class _RegisterRouteState extends State<RegisterRoute> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Name',
-              ),
-              onChanged: (text) {
-                nameText = text;
-              },
-            ),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
                 labelText: 'E-mail',
               ),
               onChanged: (email) {
@@ -59,12 +47,12 @@ class _RegisterRouteState extends State<RegisterRoute> {
             NavigatorButton(
                 onPressed: () {
                   print(nameText);
-                  setState(
-                    () {
-                      NetworkHelper()
-                          .registerPost(nameText, emailText, passwordText);
-                    },
-                  );
+                  setState(() {
+                    NetworkHelper().registerPost(emailText, passwordText);
+                  });
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return LoginRoute();
+                  }));
                 },
                 buttonTitle: "Register"),
           ],

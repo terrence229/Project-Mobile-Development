@@ -7,7 +7,6 @@ import 'item_menu_route.dart';
 /**
  * Splash screen
  * This page only displays the title and buttons:w
- * TODO: Add login & register buttons when work on backend startsT
  */
 class LandingRoute extends StatelessWidget {
   @override

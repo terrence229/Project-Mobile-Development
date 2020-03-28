@@ -1,18 +1,19 @@
 const express = require('express');
 const router = new express.Router();
 
-// Require user model for mongodb functionality
+// Require company model for mongodb functionality
 const Company = require('../models/company.model');
 
 /**
  * Register route for company
- * TODO: plan how to do this
+ * Use Postman to make new company account!
+ * Can't be done using client for now.
  */
-router.post('/register', async(req, res) => {
+router.post('/registercompany', async (req, res) => {
 	const newCompany = new Company(req.body);
-  
-  try {
-		await newUser.save();
+
+	try {
+		await newCompany.save();
 		res.status(201)
 			.header('Access-Control-Allow-Origin', '*')
 			.send();
@@ -22,21 +23,5 @@ router.post('/register', async(req, res) => {
 	}
 });
 
-/**
- * Login route for company 
- * TODO: doesn't work yet!
- */
-router.post('/login', async(req, res) => {
-	console.log(req.body);
-	const newUser = new User(req.body);
-	try {
-		await newUser.save();
-		res.status(201)
-			.header('Access-Control-Allow-Origin', '*')
-			.send();
-	} catch (error) {
-		res.status(400)
-			.send(error);
-	}
-});
+
 module.exports = router;
