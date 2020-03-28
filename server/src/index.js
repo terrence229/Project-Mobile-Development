@@ -6,13 +6,16 @@ const http = require('http');
 const express = require('express');
 
 const userRouter = require('./routers/user.router');
+const companyRouter = require('./routers/company.router');
 
 const app = express();
 const port = process.env.PORT;
 
 app.use(cors())
 app.use(express.json());
+
 app.use(userRouter);
+app.use(companyRouter);
 
 
 app.listen(port, () => {

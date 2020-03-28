@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:woosttogo/components/navigator_button.dart';
 import 'register_route.dart';
 import 'login_route.dart';
 import 'item_menu_route.dart';
@@ -6,7 +7,6 @@ import 'item_menu_route.dart';
 /**
  * Splash screen
  * This page only displays the title and buttons:w
- * TODO: Add login & register buttons when work on backend startsT
  */
 class LandingRoute extends StatelessWidget {
   @override
@@ -33,14 +33,8 @@ class LandingRoute extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 500), // Spacer between title & button,
-            MaterialButton(
-              minWidth: 300.0, // Hardcoded size, fix later!
-              color: Colors.black,
-              shape: RoundedRectangleBorder(
-                // Make button rounded
-                borderRadius: new BorderRadius.circular(50.0),
-              ),
+            SizedBox(height: 100), // Spacer
+            NavigatorButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -51,22 +45,10 @@ class LandingRoute extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(
-                // Button text
-                'Quick Order',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+              buttonTitle: "Quick Order",
             ),
-            MaterialButton(
-              minWidth: 300.0, // Hardcoded size, fix later!
-              color: Colors.black,
-              shape: RoundedRectangleBorder(
-                // Make button rounded
-                borderRadius: new BorderRadius.circular(50.0),
-              ),
+            SizedBox(height: 20), // Spacer
+            NavigatorButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -77,22 +59,10 @@ class LandingRoute extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(
-                // Button text
-                'Login',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+              buttonTitle: "Login",
             ),
-            MaterialButton(
-              minWidth: 300.0, // Hardcoded size, fix later!
-              color: Colors.black,
-              shape: RoundedRectangleBorder(
-                // Make button rounded
-                borderRadius: new BorderRadius.circular(50.0),
-              ),
+            SizedBox(height: 20),
+            NavigatorButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -103,14 +73,7 @@ class LandingRoute extends StatelessWidget {
                   ),
                 );
               },
-              child: Text(
-                // Button text
-                'Register',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+              buttonTitle: "Register",
             ),
           ],
         ),
