@@ -11,7 +11,7 @@ class NetworkHelper {
   /// If you get weird errors on Android, change localhost to
   /// your own local IP adress.
   /// info: https://github.com/hillelcoren/flutter-redux-starter/issues/16
-  final String URL = "http://localhost:1337";
+  final String URL = "http://10.0.2.2:1337";
   final storage = FlutterSecureStorage();
 
   /// Sends a login POST request to the backend
