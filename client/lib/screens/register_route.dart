@@ -1,20 +1,14 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:requests/requests.dart';
+import 'package:woosttogo/components/navigator_button.dart';
+import 'package:woosttogo/services/networking.dart';
+import 'package:woosttogo/screens/login_route.dart';
 
-class RegisterRoute extends StatefulWidget {
-	@override
-	_RegisterRouteState createState() => _RegisterRouteState();
-}
+class RegisterRoute extends StatelessWidget {
+//TODO: make secure & add client-side validation
+  String nameText;
+  String emailText;
+  String passwordText;
 
-//TODO: make secure & add validation
-String nameText;
-String passwordText;
-
-/// Register Page
-class _RegisterRouteState extends State<RegisterRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,68 +21,35 @@ class _RegisterRouteState extends State<RegisterRoute> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Email',
+                labelText: 'E-mail',
               ),
-							onChanged: (text) {
-								nameText = text;
-							},
-            ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Password',
-              ),
-							onChanged: (password) {
-								passwordText = password;
-							},
-            ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Repeat password',
-              ),
-            ),
-            SizedBox(height: 500), // Spacer between input and button
-            MaterialButton(
-              minWidth: 300.0, // Hardcoded size, fix later!
-              color: Colors.black,
-              shape: RoundedRectangleBorder(
-                // Make button rounded
-                borderRadius: new BorderRadius.circular(50.0),
-              ),
-              onPressed: () {
-                registerPost();
+              onChanged: (email) {
+                emailText = email;
               },
-              child: Text(
-                // Button text
-                'Register',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
             ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'password',
+              ),
+              onChanged: (password) {
+                passwordText = password;
+              },
+            ),
+            SizedBox(height: 100), // Spacer between input and button
+            NavigatorButton(
+                onPressed: () {
+                  print(nameText);
+                  NetworkHelper().registerPost(emailText, passwordText);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return LoginRoute();
+                  }));
+                },
+                buttonTitle: "Register"),
           ],
         ),
       ),
     );
   }
-}
-
-
-/// Posts register values to backend
-registerPost() async {
-  // r = response object
-	print("VALUE: $nameText");
-  var r = await Requests.post(
-		"http://localhost:1337/register",
-     body: { // placeholder values
-      	"name": "$nameText",
-				"password": "$passwordText"
-     },
-
-     bodyEncoding: RequestBodyEncoding.JSON); // format to send
-  r.raiseForStatus();
 }

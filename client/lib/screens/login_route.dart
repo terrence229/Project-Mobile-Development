@@ -1,20 +1,22 @@
 import 'dart:async';
-import 'dart:convert';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:requests/requests.dart';
+import 'package:woosttogo/components/navigator_button.dart';
+import 'package:woosttogo/services/networking.dart';
+import 'item_menu_route.dart';
 
-class LoginRoute extends StatefulWidget {
-	@override
-	_LoginRouteState createState() => _LoginRouteState();
-}
+class LoginRoute extends StatelessWidget {
+  Future<String> get jwtOrEmpty async {
+    var jwt = await storage.read(key: "jwt");
+    if (jwt == null) return "";
+    return jwt;
+  }
 
-//TODO: make secure & add validation
-String nameText;
-String passwordText;
+  String emailText;
+  String passwordText;
 
-/// Register Page
-class _LoginRouteState extends State<LoginRoute> {
+  final storage = FlutterSecureStorage(); // TODO: move to networking tool
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +31,9 @@ class _LoginRouteState extends State<LoginRoute> {
                 border: OutlineInputBorder(),
                 labelText: 'Email',
               ),
-							onChanged: (text) {
-								nameText = text;
-							},
+              onChanged: (email) {
+                emailText = email;
+              },
             ),
             TextField(
               obscureText: true,
@@ -39,49 +41,31 @@ class _LoginRouteState extends State<LoginRoute> {
                 border: OutlineInputBorder(),
                 labelText: 'Password',
               ),
-							onChanged: (password) {
-								passwordText = password;
-							},
-            ),
-            SizedBox(height: 500), // Spacer between input and button
-            MaterialButton(
-              minWidth: 300.0, // Hardcoded size, fix later!
-              color: Colors.black,
-              shape: RoundedRectangleBorder(
-                // Make button rounded
-                borderRadius: new BorderRadius.circular(50.0),
-              ),
-              onPressed: () {
-                loginPost();
+              onChanged: (password) {
+                passwordText = password;
               },
-              child: Text(
-                // Button text
-                'Login',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+            ),
+            SizedBox(height: 100), // Spacer between input and button
+            NavigatorButton(
+              buttonTitle: "Login",
+              onPressed: () async {
+                var jwt =
+                    await NetworkHelper().loginPost(emailText, passwordText);
+                if (jwt != null) {
+                  storage.write(key: "jwt", value: jwt);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ItemMenu();
+                  }));
+                  // TODO: pass JWT to next page
+                  // builder: (context) => NextPage.fromBase64(jwt)));
+                } else {
+                  print('jwt is null (wrong credentials)');
+                }
+              },
             ),
           ],
         ),
       ),
     );
   }
-}
-
-
-/// Posts register values to backend
-loginPost() async {
-  // r = response object
-	print("VALUE: $nameText");
-  var r = await Requests.post(
-		"http://localhost:1337/login",
-     body: { // placeholder values
-      	"name": "$nameText",
-				"password": "$passwordText"
-     },
-
-     bodyEncoding: RequestBodyEncoding.JSON); // format to send
-  r.raiseForStatus();
 }
