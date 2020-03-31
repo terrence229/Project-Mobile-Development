@@ -15,7 +15,7 @@ class ItemMenu extends StatelessWidget{
   }
 }
 
-class BuildRestaurantCard extends StatelessWidget{
+class BuildRestaurantCard extends StatefulWidget{
   BuildRestaurantCard({
     Key key,
     this.photo,
@@ -23,7 +23,7 @@ class BuildRestaurantCard extends StatelessWidget{
     this.openingHours,
     this.closingHours,
     this.walkingDistance,
-}): super (key: key);
+  }): super (key: key);
 
   final Image photo;
   final String restaurantName;
@@ -32,49 +32,65 @@ class BuildRestaurantCard extends StatelessWidget{
   final String walkingDistance;
 
   @override
-  Widget build(BuildContext context){
+  State<StatefulWidget> createState(){
+    return BuildRestaurantCardState();
+  }
+}
+
+class BuildRestaurantCardState extends State<BuildRestaurantCard> {
+  static bool favorite=false;
+
+  void favoriteItem() {
+    favorite=!favorite;
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Card(
-        child: Container(
-          height: 100,
-          child: Column(
-            children: [
-              ListTile(
-                  leading: photo,
-                  title: Text(restaurantName,
-                      style: TextStyle(fontWeight: FontWeight.w500)),
-                  subtitle: Column(
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            RichText(
-                                text: TextSpan(
-                                    style: DefaultTextStyle.of(context).style,
-                                    children: <TextSpan>[
-                                        TextSpan(text: openingHours+ ' - '+ closingHours),
+          child: Container(
+            height: 100,
+            child: Column(
+              children: [
+                ListTile(
+                    leading: widget.photo,
+                    title: Text(widget.restaurantName,
+                        style: TextStyle(fontWeight: FontWeight.w500)),
+                    subtitle: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context).style,
+                                      children: <TextSpan>[
+                                        TextSpan(text: widget.openingHours + ' - ' + widget.closingHours),
                                       ]
                                   )
                               ),
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Icon(Icons.place),
-                            Text(walkingDistance),
-                          ],
-                        )
-                      ]
-                  ),
-                  trailing:
-                  IconButton(
-                    icon: Icon(Icons.star_border),
-                    onPressed: (){
-                    },
-                  )
-              ),
-            ],
-          ),
-        )
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Icon(Icons.place),
+                              Text(widget.walkingDistance),
+                            ],
+                          )
+                        ]
+                    ),
+                    trailing:
+                    IconButton(
+                      icon: Icon(favorite? Icons.star: Icons.star_border),
+                      onPressed: () {
+                        setState(() {
+                          favoriteItem();
+                        });
+                      },
+                    )
+                ),
+              ],
+            ),
+          )
       ),
     );
   }
@@ -86,14 +102,12 @@ class BuildItemCard extends StatefulWidget{
     this.itemName,
     this.description,
     this.price,
-    this.amount,
   });
 
   final Image photo;
   final String itemName;
   final String description;
   final double price;
-  int amount;
 
   @override
   State<StatefulWidget> createState(){
@@ -102,17 +116,12 @@ class BuildItemCard extends StatefulWidget{
 }
 
 class BuildItemCardState extends State<BuildItemCard>{
-  void addItem(){
-    setState(() {
-      widget.amount++;
-    });
-  }
 
   void sentInfo(){
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => GetItemValues(widget.photo, widget.itemName,  widget.price, widget.amount)
+          builder: (context) => GetItemValues(widget.photo, widget.itemName,  widget.price)
         )
     );
   }
@@ -150,7 +159,6 @@ class BuildItemCardState extends State<BuildItemCard>{
                               icon: Icon(Icons.arrow_forward_ios),
                               color: Colors.white,
                               onPressed: (){
-                                addItem();
                                 sentInfo();
                                 //changePage();
                               },
@@ -188,35 +196,13 @@ class BuildScreen extends StatelessWidget{
           itemName: 'Hamburger met friet',
           description: 'Beef, sla, tomaat, augurk, huisgemaakte burgersaus, huisgemaakte friet',
           price: 10,
-          amount: 0,
         ),
         BuildItemCard(
           photo: Image.asset('assets/Texas_Burger.jpg'),
           itemName: 'Texas Burger',
           description: 'Beef, sla, bacon, tomaat, augurk, pittige huisgemaakte burgersaus, huisgemaakte friet',
           price: 11.5,
-          amount: 0,
         ),
-        Container(
-          child: MaterialButton(
-            minWidth: 300.0, // Hardcoded size, fix later!
-            color: Colors.yellow,
-            shape: RoundedRectangleBorder(
-              // Make button rounded
-              borderRadius: new BorderRadius.circular(50.0),
-            ),
-            onPressed: () {
-            },
-            child: Text(
-              // Button text
-              'Volgende',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        )
       ],
     );
   }

@@ -6,13 +6,12 @@ class GetItemValues extends StatefulWidget{
       this.photo,
       this.itemName,
       this.price,
-      this.amount,
       );
 
   final Widget photo;
   final String itemName;
   final double price;
-  int amount;
+  int amount=1;
 
   @override
   State<StatefulWidget> createState() {
@@ -121,7 +120,7 @@ class BuildItemInfo extends State<GetItemValues>{
               },
               child: Text(
                 // Button text
-                'Volgende',
+                'Toevoegen',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
