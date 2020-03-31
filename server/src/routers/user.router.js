@@ -66,5 +66,19 @@ router.patch('/makeowner/:id', async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-})
+});
+
+/**
+ * Deletes user by giving it an ID
+ * TODO: add verification / make secure
+ */
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    res.send(user)
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 module.exports = router;

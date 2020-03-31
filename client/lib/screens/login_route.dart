@@ -16,6 +16,7 @@ class LoginRoute extends StatelessWidget {
   String passwordText;
 
   final storage = FlutterSecureStorage(); // TODO: move to networking tool
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

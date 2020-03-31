@@ -3,18 +3,12 @@ import 'package:woosttogo/components/navigator_button.dart';
 import 'package:woosttogo/services/networking.dart';
 import 'package:woosttogo/screens/login_route.dart';
 
-class RegisterRoute extends StatefulWidget {
-  @override
-  _RegisterRouteState createState() => _RegisterRouteState();
-}
-
+class RegisterRoute extends StatelessWidget {
 //TODO: make secure & add client-side validation
-String nameText;
-String emailText;
-String passwordText;
+  String nameText;
+  String emailText;
+  String passwordText;
 
-/// Register Page
-class _RegisterRouteState extends State<RegisterRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +41,7 @@ class _RegisterRouteState extends State<RegisterRoute> {
             NavigatorButton(
                 onPressed: () {
                   print(nameText);
-                  setState(() {
-                    NetworkHelper().registerPost(emailText, passwordText);
-                  });
+                  NetworkHelper().registerPost(emailText, passwordText);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return LoginRoute();
                   }));
