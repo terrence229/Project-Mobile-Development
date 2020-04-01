@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'order_route.dart';
-import 'map_route.dart' ;
+import 'package:woosttogo/components/navigator_button.dart';
+import 'register_route.dart';
+import 'login_route.dart';
+import 'item_menu_route.dart';
 
 /**
  * Splash screen
  * This page only displays the title and buttons:w
- * TODO: Add login & register buttons when work on backend startsT
  */
 class LandingRoute extends StatelessWidget {
   @override
@@ -32,32 +33,47 @@ class LandingRoute extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 500), // Spacer between title & button,
-            MaterialButton(
-              minWidth: 300.0, // Hardcoded size, fix later!
-              color: Colors.black,
-              shape: RoundedRectangleBorder(
-                // Make button rounded
-                borderRadius: new BorderRadius.circular(50.0),
-              ),
+            SizedBox(height: 100), // Spacer
+            NavigatorButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return MyApp(); // Display new route
+                      return ItemMenu(); // Display new route
                     },
                   ),
                 );
               },
-              child: Text(
-                // Button text
-                'Quick Order',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+              buttonTitle: "Quick Order",
+            ),
+            SizedBox(height: 20), // Spacer
+            NavigatorButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return LoginRoute(); // Display new route
+                    },
+                  ),
+                );
+              },
+              buttonTitle: "Login",
+            ),
+            SizedBox(height: 20),
+            NavigatorButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return RegisterRoute(); // Display new route
+                    },
+                  ),
+                );
+              },
+              buttonTitle: "Register",
             ),
           ],
         ),
