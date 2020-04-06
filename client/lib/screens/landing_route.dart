@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woosttogo/components/navigator_button.dart';
+import 'package:woosttogo/screens/restaurants_route.dart';
 import 'register_route.dart';
 import 'login_route.dart';
 import 'item_menu_route.dart';
@@ -40,7 +41,8 @@ class LandingRoute extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return ItemMenu(); // Display new route
+                      return RestaurantRoute(); // Display new route
+                      // return ItemMenu(); // Display new route
                     },
                   ),
                 );
@@ -81,3 +83,4 @@ class LandingRoute extends StatelessWidget {
     );
   }
 }
+
