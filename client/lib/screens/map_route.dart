@@ -1,10 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:search_map_place/search_map_place.dart';
 
-void main() => runApp(MyApp());
-    class MyApp extends StatelessWidget{
+void main() => runApp(MapRoute());
+    class MapRoute extends StatelessWidget{
       @override
       Widget build(BuildContext context) {
         return MaterialApp(
@@ -87,13 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  GoogleMapController mapController;
-
+  //GoogleMapController mapController;
+  Completer<GoogleMapController> mapController = Completer();
   String searchAddr;
 
   @override
   Widget build(BuildContext context) {
-    SearchMapPlaceWidget();
+    //SearchMapPlaceWidget();
     return Scaffold(
         appBar: AppBar(
           title: Text('Maps'),
@@ -105,10 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: GoogleMap(
+
                       initialCameraPosition: CameraPosition(
                           target: LatLng(52.3702157, 4.8951679),
                           zoom: 12
                       ),
+                      onMapCreated: (GoogleMapController controller) {
+                        mapController.complete(controller);
+                      },
                     ),
                   ),
                   Positioned(
@@ -145,13 +151,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  searchandNavigate() {
-    Geolocator().placemarkFromAddress(searchAddr).then((result) {
-      mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+  Future<void> searchandNavigate()  {
+    Geolocator().placemarkFromAddress(searchAddr).then((result) async{
+      final GoogleMapController controller = await mapController.future;
+      controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
           target:
           LatLng(result[0].position.latitude, result[0].position.longitude),
           zoom: 10.0)));
-      print("werkts");
+      debugPrint("werkt");
     });
   }
 

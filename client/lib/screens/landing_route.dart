@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woosttogo/components/navigator_button.dart';
+import 'package:woosttogo/screens/map_route.dart';
 import 'register_route.dart';
 import 'login_route.dart';
 import 'item_menu_route.dart';
@@ -74,6 +75,20 @@ class LandingRoute extends StatelessWidget {
                 );
               },
               buttonTitle: "Register",
+            ),
+            SizedBox(height: 40), // Spacer
+            NavigatorButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MapRoute(); // Display new route
+                    },
+                  ),
+                );
+              },
+              buttonTitle: "map",
             ),
           ],
         ),
