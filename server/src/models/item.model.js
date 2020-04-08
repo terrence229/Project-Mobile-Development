@@ -1,19 +1,15 @@
 const mongoose = require('mongoose');
 
-
 /**
- * Company model used to model company documents
- * TODO: link company model to owner(s)
+ * Item model used to model possible items for sale from a company
+ * TODO: Link all items to a menu
  * TODO: link menu's to companies
  */
-const companySchema = new mongoose.Schema({
-    photo: {
-        type: Image,
-        required: true,
-    },
+const itemSchema = new mongoose.Schema({
+    id: mongoose.SchemaTypes.ObjectId,
 	itemName: {
 		type: String,
-		required: true,
+        required: true,
     },
     description:{
         type: String,
@@ -21,10 +17,10 @@ const companySchema = new mongoose.Schema({
         maxlength: 200,
     },
     price: {
-        type: double,
+        type: Number,
         required: true,
     }
 });
 
-const Item = mongoose.model('Item', userSchema);
+const Item = mongoose.model('Item', itemSchema);
 module.exports = Item;
