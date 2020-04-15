@@ -6,5 +6,3 @@ mongoose.connect(mongoDB, {
 	useUnifiedTopology: true,
 	useCreateIndex: true, // Removes DeprecationWarning, no clue what it does
 })
-
-
