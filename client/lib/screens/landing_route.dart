@@ -47,6 +47,21 @@ class LandingRoute extends StatelessWidget {
                   ),
                 );
               },
+              buttonTitle: "Map",
+            ),
+                        SizedBox(height: 100), // Spacer
+            NavigatorButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      // return RestaurantRoute(); // Display new route
+                      return ItemMenu(); // Display new route
+                    },
+                  ),
+                );
+              },
               buttonTitle: "Quick Order",
             ),
             SizedBox(height: 20), // Spacer
