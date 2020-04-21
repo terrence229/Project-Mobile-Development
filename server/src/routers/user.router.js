@@ -81,4 +81,17 @@ router.delete('/delete/:id', async (req, res) => {
   }
 });
 
+
+router.get('/usersList', async (req, res) => {
+  User.find({}, function(err, users) {
+    var userMap = {};
+
+    users.forEach(function(user) {
+      userMap[user._id] = user;
+    });
+
+    res.send(userMap);  
+  });
+});
+
 module.exports = router;

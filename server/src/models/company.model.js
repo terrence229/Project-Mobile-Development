@@ -22,5 +22,15 @@ const companySchema = new mongoose.Schema({
 	}
 });
 
+/**
+ * Find restauarnt by name
+ * Used to find traveltime to location
+ * @param {companyName} companyName name to find company by
+ */
+companySchema.statics.getCompanyByName= async (companyName) => {
+  const company = await Company.findOne({name});
+  return company.name;
+};
+
 const Company = mongoose.model('Company', companySchema);
 module.exports = Company;
