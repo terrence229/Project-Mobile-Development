@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
 /**
  * Item model used to model possible items for sale from a company
@@ -6,8 +7,8 @@ const mongoose = require('mongoose');
  * TODO: link menu's to companies
  */
 const itemSchema = new mongoose.Schema({
-    id: mongoose.SchemaTypes.ObjectId,
 	itemName: {
+        unique: true,
 		type: String,
         required: true,
     },
@@ -22,5 +23,6 @@ const itemSchema = new mongoose.Schema({
     }
 });
 
+itemSchema.plugin(uniqueValidator);
 const Item = mongoose.model('Item', itemSchema);
 module.exports = Item;
