@@ -11,7 +11,6 @@ const Company = require('../models/company.model');
  */
 router.post('/registercompany', async (req, res) => {
 	const newCompany = new Company(req.body);
-
 	try {
 		await newCompany.save();
 		res.status(201)
