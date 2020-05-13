@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:woosttogo/components/data_list.dart';
 
 class ListRoute extends StatefulWidget {
   @override
@@ -32,15 +33,23 @@ class _ListRouteState extends State<ListRoute> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final fireData = snapshot.data.documents;
-                  List<Text> dataWidgets = [];
+                  List<DataList> dataWidgets = [];
                   for (var dataUnit in fireData) {
                     final restaurantName = dataUnit.data['name'];
+                    final resutaurantLocation = dataUnit.data['location'];
                     final openingHours = dataUnit.data['hours'];
                     final menu = dataUnit.data['menu'];
 
-                    final dataWidget = Text('$restaurantName, $menu, open on $openingHours');
-                    dataWidgets.add(dataWidget);
+                    final dataList = DataList(
+                      restaurant: restaurantName,
+                      location: resutaurantLocation,
+                      hours: openingHours,
+                      menu: menu,
+                    );
+
+                    dataWidgets.add(dataList);
                   }
+
                   return Column(
                     children: dataWidgets,
                   );

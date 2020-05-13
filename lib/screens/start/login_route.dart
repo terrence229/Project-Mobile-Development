@@ -59,7 +59,7 @@ class _LoginRouteState extends State<LoginRoute> {
                   // Print email if user is logged in
                   if (loginUser != null) {
                     print(loginUser.user.email);
-                    if (loginUser.user.email == "huip@outlook.com") {
+                    if (loginUser.user.email == "admin@admin.nl") {
                       Navigator.pushNamed(context, "/admin");
                     }
                   }

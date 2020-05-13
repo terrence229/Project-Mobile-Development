@@ -14,6 +14,7 @@ class _AddDataRouteState extends State<AddDataRoute> {
   FirebaseUser loggedInuser;
 
   String restaurantName;
+  String restaurantLocation;
   String openingHours;
   String menu; // Placeholder
 
@@ -38,6 +39,15 @@ class _AddDataRouteState extends State<AddDataRoute> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
+                labelText: 'Location',
+              ),
+              onChanged: (value) {
+                restaurantLocation = value;
+              },
+            ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
                 labelText: 'Opening hours (e.g. "07:00 - 23:00")',
               ),
               onChanged: (value) {
@@ -53,30 +63,53 @@ class _AddDataRouteState extends State<AddDataRoute> {
                 menu = value;
               },
             ),
-            SizedBox(height: 100), // Spacer between input and button
-            NavigatorButton(
-              buttonTitle: "Add to database",
-              onPressed: () async {
+            SizedBox(height: 50), // Spacer between input and button
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
 
-                // Firestore expects a map of the data!
-                _firestore.collection("restaurants").add({
-                  'name': restaurantName,
-                  'hours': openingHours,
-                  'menu': menu
-                });
-                try {
-                  print("Hello, World!");
-                } catch (e) {
-                  print(e);
-                }
-              },
+              children: <Widget>[
+                FlatButton(
+                  color: Colors.yellow,
+                  onPressed: () async {
+                    // Firestore expects a map of the data!
+                    _firestore.collection("restaurants").add({
+                      'name': restaurantName,
+                      'location': restaurantLocation,
+                      'hours': openingHours,
+                      'menu': menu
+                    });
+                    try {
+                      print("Hello, World!");
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                  child: Text(
+                    "Add to DB",
+                  ),
+                ),
+                SizedBox(width: 50),
+                FlatButton(
+                  color: Colors.yellow,
+                  onPressed: () async {
+
+                  },
+                  child: Text(
+                    "Menus",
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 20),
-            NavigatorButton(
-              buttonTitle: "Show list",
+            FlatButton(
+              color: Colors.yellow,
               onPressed: () async {
                 Navigator.pushNamed(context, "/adminlist");
               },
+              child: Text(
+                "Show List"
+              ),
             ),
           ],
         ),
