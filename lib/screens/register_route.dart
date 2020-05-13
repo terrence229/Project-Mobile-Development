@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:woosttogo/components/navigator_button.dart';
-import 'package:woosttogo/services/networking.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterRoute extends StatelessWidget {
