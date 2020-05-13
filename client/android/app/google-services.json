@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "334003656333",
+    "firebase_url": "https://woost-togo-1e728.firebaseio.com",
+    "project_id": "woost-togo-1e728",
+    "storage_bucket": "woost-togo-1e728.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334003656333:android:5ae2924c4d804b365774c4",
+        "android_client_info": {
+          "package_name": "io.woosttogo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334003656333-hmp823eeh26b3mqldt7qgmkbim0iobmj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsjZY5KaXFEK9svmGOr4PjGcSmQcAr5JE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334003656333-hmp823eeh26b3mqldt7qgmkbim0iobmj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
