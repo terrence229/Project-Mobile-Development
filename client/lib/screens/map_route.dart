@@ -11,14 +11,14 @@ void main() => runApp(MapRoute());
       Widget build(BuildContext context) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: MyHomePage(),
+          home: MapPage(),
         );
       }
       }
 
-    class MyHomePage extends StatefulWidget{
+    class MapPage extends StatefulWidget{
       @override
-      _MyHomePageState createState() => _MyHomePageState();
+      _mapState createState() => _mapState();
 
     }
 
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-class _MyHomePageState extends State<MyHomePage> {
+class _mapState extends State<MapPage> {
   //GoogleMapController mapController;
   Completer<GoogleMapController> mapController = Completer();
   String searchAddr;
@@ -103,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
             child: Stack(
                 children: <Widget>[
+                  //displaying of the map
                   Container(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
@@ -117,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                   ),
+                  //displaying of the searchbar
                   Positioned(
                     top: 30.0,
                     right: 15.0,
@@ -152,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> searchandNavigate()  {
+    //finds the coordinates from the place the user is searching for and redirects them in a smooth way
     Geolocator().placemarkFromAddress(searchAddr).then((result) async{
       final GoogleMapController controller = await mapController.future;
       controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
@@ -161,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
       debugPrint("werkt");
     });
   }
-
+//gives the controller to the mapcontroller
   void onMapCreated(controller) {
     setState(() {
       mapController = controller;
