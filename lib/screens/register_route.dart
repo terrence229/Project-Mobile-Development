@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterRoute extends StatelessWidget {
 
-  
+
   //TODO: make secure & add client-side validation
   String nameText;
   String emailText;

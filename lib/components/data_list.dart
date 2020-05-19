@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 /// Datalist component used to show and format restaurants and menus
@@ -7,7 +9,9 @@ class DataList extends StatelessWidget {
   final String restaurant;
   final String location;
   final String hours;
-  final String menu;
+  final Map<String, dynamic> menu;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class DataList extends StatelessWidget {
           Text(restaurant),
           Text(location),
           Text(hours),
-          Text(menu)
+          Text(menu.toString())
         ],
       ),
 

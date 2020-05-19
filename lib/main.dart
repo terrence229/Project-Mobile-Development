@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:woosttogo/screens/admin/add_data_route.dart';
 import 'package:woosttogo/screens/admin/show_list_route.dart';
+import 'package:woosttogo/screens/admin/show_menu_route.dart';
 import 'dart:convert';
 
 import 'screens/start/login_route.dart';
@@ -34,6 +35,7 @@ class MainApp extends StatelessWidget {
         "/itemmenu": (context) => ItemMenu(),
         "/adminlist": (context) => ListRoute(), // admin / testing
         "/admin": (context) => AddDataRoute(), // admin / testing
+        '/adminmenuview': (context) => ShowMenuRoute(), // admin / testing
       },
     );
   }

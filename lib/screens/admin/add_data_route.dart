@@ -72,15 +72,14 @@ class _AddDataRouteState extends State<AddDataRoute> {
                 FlatButton(
                   color: Colors.yellow,
                   onPressed: () async {
-                    // Firestore expects a map of the data!
-                    _firestore.collection("restaurants").add({
-                      'name': restaurantName,
-                      'location': restaurantLocation,
-                      'hours': openingHours,
-                      'menu': menu
-                    });
                     try {
-                      print("Hello, World!");
+                      // Firestore expects a map of the data!
+                      _firestore.collection("restaurants").add({
+                        'name': restaurantName,
+                        'location': restaurantLocation,
+                        'hours': openingHours,
+                        'menu': menu
+                      });
                     } catch (e) {
                       print(e);
                     }
