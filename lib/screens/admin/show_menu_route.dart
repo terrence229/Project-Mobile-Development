@@ -20,8 +20,6 @@ class ShowMenuRoute extends StatelessWidget {
     int drinksSize = menu["drinks"].length;
     int foodSize = menu["food"].length;
 
-    
-
     testRun();
     return Scaffold(
       appBar: AppBar(

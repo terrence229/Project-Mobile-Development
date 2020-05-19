@@ -99,11 +99,10 @@ class _RestaurantListRouteState extends State<RestaurantListRoute> {
 
 // Prinst format restaurant information
 class RestaurantCard extends StatelessWidget {
-  RestaurantCard(
-      {this.restaurantName,
-        this.restaurantLocation,
-        this.openingHours,
-        this.menu});
+  RestaurantCard({this.restaurantName,
+    this.restaurantLocation,
+    this.openingHours,
+    this.menu});
 
   final String restaurantName;
   final String restaurantLocation;
@@ -112,68 +111,84 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10.0),
-      child: Material(
-        elevation: 5.0,
-        color: Colors.yellow,
-        child: MaterialButton(
-          onPressed: () => {
-            print("You pressed the" + restaurantName + " button"),
+    return Center(
+        child: Container(
+          child: Card(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  ListTile(
+                    //leading: widget.photo,
+                      title: Text(restaurantName,
+                          style: TextStyle(fontWeight: FontWeight.w500)),
+                      subtitle: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.location_on,
+                                color: Colors.black,
+                                size: 20.0,
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle
+                                        .of(context)
+                                        .style,
+                                    children: <TextSpan>[
+                                      TextSpan(text: restaurantLocation),
+                                    ]
+                                ),
+                              )
+                            ],
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                style: DefaultTextStyle
+                                    .of(context)
+                                    .style,
+                                children: <TextSpan>[
+                                  TextSpan(text: "Open tussen: "),
+                                  TextSpan(text: openingHours, style: TextStyle(
+                                      fontWeight: FontWeight.bold))
+                                ]
+                            ),
+                          )
 
-            // TODO: fix hardcoded drinks and food transfer
-            Navigator.pushNamed(context, "/adminmenuview", arguments: {
-              'drinks': menu.values.elementAt(0),
-              'food': menu.values.elementAt(1)
-            }),
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-            child: Column(
-              children: <Widget>[
-                Align(
-                  // Align to align left
-                  alignment: Alignment.centerLeft, // Aligning
-                  child: Text(restaurantName,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                      )),
-                ),
-                Align(
-                  // Align to align left
-                  alignment: Alignment.centerLeft, // Aligning
-                  child: Text(openingHours,
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 15.0,
-                    ),),
-                ),
-                Align(
-                  // Align to align left
-                  alignment: Alignment.centerLeft, // Aligning
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.location_on,
-                        color: Colors.black,
-                        size: 30.0,
+                        ],
                       ),
-                      Padding(
-                        // Padding to distance text frm icon
-                        padding: EdgeInsets.only(left: 5.0),
-                        child: Text(restaurantLocation,
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            )),
-                      ),
-                    ],
+                      trailing: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.yellow,
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              IconButton(
+                                //alignment: Alignment.topCenter,
+                                icon: Icon(Icons.arrow_forward_ios),
+                                color: Colors.black,
+                                onPressed: () {
+                                  print("You pressed the" + restaurantName +
+                                      " button");
+
+                                  // TODO: fix hardcoded drinks and food transfer
+                                  Navigator.pushNamed(context, "/adminmenuview",
+                                      arguments: {
+                                        'drinks': menu.values.elementAt(0),
+                                        'food': menu.values.elementAt(1)
+                                      });
+                                },
+                              )
+                            ],
+                          )
+                      )
                   ),
-                ),
-              ],
-            ),
+                ],
+              )
           ),
-        ),
-      ),
+        )
     );
   }
 }
