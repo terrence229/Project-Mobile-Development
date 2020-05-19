@@ -36,32 +36,55 @@ class ShowMenuRoute extends StatelessWidget {
                 double value =
                     completeMenu.values.elementAt(index).toDouble();
 
-                return Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-                  child: new Column(
-                    children: <Widget>[
-                      Material(
-                        elevation: 5.0,
-                        color: Colors.yellow,
-                        child: MaterialButton(
-                          onPressed: () => {
-                            print("You pressed the " + key + " button"),
-                          },
-                          child: Align(
-                            // Align to align left
-                            alignment: Alignment.centerLeft, // Aligning
-                            child: new Text(
-                              '$key costs €$value',
-                              style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 15.0,
-                              ),
+                return Card(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          //leading: widget.photo,
+                            title: Text(key,
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            subtitle: Row(
+                              children: <Widget>[
+                                Column(
+                                  children: <Widget>[
+                                    RichText(
+                                      text: TextSpan(
+                                          style: DefaultTextStyle.of(context).style,
+                                          children: <TextSpan>[
+                                            TextSpan(text: "Prijs: "),
+                                            TextSpan(text: "€"+value.toString(), style: TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                            )
+                                          ]
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          ),
+                            trailing: Container(
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.yellow,
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                      alignment: Alignment.bottomCenter,
+                                      icon: Icon(Icons.arrow_forward_ios),
+                                      color: Colors.black,
+                                      onPressed: () {
+                                        print("You pressed the " + key + " button");
+                                      },
+                                    )
+                                  ],
+                                )
+                            )
                         ),
-                      )
-                    ],
-                  ),
+                      ],
+                    )
                 );
               },
             ),

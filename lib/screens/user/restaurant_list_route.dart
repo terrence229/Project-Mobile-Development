@@ -120,7 +120,9 @@ class RestaurantCard extends StatelessWidget {
                   ListTile(
                     //leading: widget.photo,
                       title: Text(restaurantName,
-                          style: TextStyle(fontWeight: FontWeight.w500)),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontWeight: FontWeight.bold,
+                          )),
                       subtitle: Column(
                         children: <Widget>[
                           Row(
@@ -132,9 +134,7 @@ class RestaurantCard extends StatelessWidget {
                               ),
                               RichText(
                                 text: TextSpan(
-                                    style: DefaultTextStyle
-                                        .of(context)
-                                        .style,
+                                    style: DefaultTextStyle.of(context).style,
                                     children: <TextSpan>[
                                       TextSpan(text: restaurantLocation),
                                     ]
@@ -142,19 +142,20 @@ class RestaurantCard extends StatelessWidget {
                               )
                             ],
                           ),
-                          RichText(
-                            text: TextSpan(
-                                style: DefaultTextStyle
-                                    .of(context)
-                                    .style,
-                                children: <TextSpan>[
-                                  TextSpan(text: "Open tussen: "),
-                                  TextSpan(text: openingHours, style: TextStyle(
-                                      fontWeight: FontWeight.bold))
-                                ]
-                            ),
+                          Row(
+                            children: <Widget>[
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context).style,
+                                    children: <TextSpan>[
+                                      TextSpan(text: "Open tussen: "),
+                                      TextSpan(text: openingHours, style: TextStyle(
+                                          fontWeight: FontWeight.bold))
+                                    ]
+                                ),
+                              )
+                            ],
                           )
-
                         ],
                       ),
                       trailing: Container(
@@ -166,7 +167,7 @@ class RestaurantCard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               IconButton(
-                                //alignment: Alignment.topCenter,
+                                alignment: Alignment.bottomCenter,
                                 icon: Icon(Icons.arrow_forward_ios),
                                 color: Colors.black,
                                 onPressed: () {
