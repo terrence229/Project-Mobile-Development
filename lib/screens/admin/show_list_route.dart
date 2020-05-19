@@ -120,7 +120,7 @@ class RestaurantCard extends StatelessWidget {
         child: MaterialButton(
           onPressed: () => {
             print("You pressed the" + restaurantName + " button"),
-            Navigator.pushNamed(context, "/adminmenuview", arguments: restaurantName),
+            Navigator.pushNamed(context, "/adminmenuview", arguments: {'menu': menu}),
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
