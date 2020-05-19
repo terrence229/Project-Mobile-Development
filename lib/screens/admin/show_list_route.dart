@@ -120,7 +120,7 @@ class RestaurantCard extends StatelessWidget {
         child: MaterialButton(
           onPressed: () => {
             print("You pressed the" + restaurantName + " button"),
-            
+
             // TODO: fix hardcoded drinks and food transfer
             Navigator.pushNamed(context, "/adminmenuview", arguments: {
               'drinks': menu.values.elementAt(0),
@@ -146,7 +146,7 @@ class RestaurantCard extends StatelessWidget {
                       style: TextStyle(
                         fontStyle: FontStyle.italic,
                         fontSize: 15.0,
-                      )),
+                      ),),
                 ),
                 Align(
                   // Align to align left

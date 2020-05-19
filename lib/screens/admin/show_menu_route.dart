@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -11,11 +10,18 @@ class ShowMenuRoute extends StatelessWidget {
     // Gets menu from previous route.
     final Map<String, dynamic> menu = ModalRoute.of(context).settings.arguments;
 
-    void testRun() {
+    Map<String, dynamic> completeMenu = {};
+    completeMenu.addAll(menu['food']);
+    completeMenu.addAll(menu['drinks']);
 
-      print(menu.values.elementAt(0)); // Prints drinks
-      print(menu.values.elementAt(1)); // Prints food
+    void testRun() {
+      print(completeMenu.toString());
     }
+
+    int drinksSize = menu["drinks"].length;
+    int foodSize = menu["food"].length;
+
+    
 
     testRun();
     return Scaffold(
@@ -23,28 +29,46 @@ class ShowMenuRoute extends StatelessWidget {
         title: Text("List View Route > Menu"),
       ),
       body: Center(
-        child: Text('$menu'),
-      ),
-    );
-  }
-}
+        child: Column(
+          children: <Widget>[
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: completeMenu.length, // TODO: add food size as well
+              itemBuilder: (BuildContext context, int index) {
+                String key = completeMenu.keys.elementAt(index);
+                double value =
+                    completeMenu.values.elementAt(index).toDouble();
 
-class MenuList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10.0),
-      child: Material(
-        elevation: 5.0,
-        color: Colors.yellow,
-        child: MaterialButton(
-          onPressed: () => {print("Hello, World!")},
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-            child: Column(
-              children: <Widget>[],
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                  child: new Column(
+                    children: <Widget>[
+                      Material(
+                        elevation: 5.0,
+                        color: Colors.yellow,
+                        child: MaterialButton(
+                          onPressed: () => {
+                            print("You pressed the " + key + " button"),
+                          },
+                          child: Align(
+                            // Align to align left
+                            alignment: Alignment.centerLeft, // Aligning
+                            child: new Text(
+                              '$key costs €$value',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: 15.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
             ),
-          ),
+          ],
         ),
       ),
     );
