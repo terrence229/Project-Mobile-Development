@@ -4,6 +4,7 @@ class ShowMenuRoute extends StatelessWidget {
   final Map<String, dynamic> menu;
   ShowMenuRoute({Key key, this.menu}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     // Gets menu from previous route.
@@ -77,6 +78,12 @@ class ShowMenuRoute extends StatelessWidget {
                                       color: Colors.black,
                                       onPressed: () {
                                         print("You pressed the " + key + " button");
+
+                                        Navigator.pushNamed(context, "/itemoverview",
+                                            arguments: {
+                                              'itemName': key,
+                                              'price': value.toString()
+                                            });
                                       },
                                     )
                                   ],
