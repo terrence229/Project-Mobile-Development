@@ -100,85 +100,87 @@ class RestaurantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Container(
-      child: Card(
+      child: Container(
+        child: Card(
           color: Colors.white,
           child: Column(
             children: [
               ListTile(
-                  //leading: widget.photo,
-                  title: Text(restaurantName,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      )),
-                  subtitle: Column(
+                //leading: widget.photo,
+                title: Text(restaurantName,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    )),
+                subtitle: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.location_on,
+                          color: Colors.black,
+                          size: 20.0,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                TextSpan(text: restaurantLocation),
+                              ]),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        RichText(
+                          text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                TextSpan(text: "Open tussen: "),
+                                TextSpan(
+                                    text: openingHours,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold))
+                              ]),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+                trailing: Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.yellow,
+                  ),
+                  child: Column(
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.black,
-                            size: 20.0,
-                          ),
-                          RichText(
-                            text: TextSpan(
-                                style: DefaultTextStyle.of(context).style,
-                                children: <TextSpan>[
-                                  TextSpan(text: restaurantLocation),
-                                ]),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          RichText(
-                            text: TextSpan(
-                                style: DefaultTextStyle.of(context).style,
-                                children: <TextSpan>[
-                                  TextSpan(text: "Open tussen: "),
-                                  TextSpan(
-                                      text: openingHours,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold))
-                                ]),
-                          )
-                        ],
+                      IconButton(
+                        alignment: Alignment.bottomCenter,
+                        icon: Icon(Icons.arrow_forward_ios),
+                        color: Colors.black,
+                        onPressed: () {
+                          print("You pressed the" + restaurantName + " button");
+
+                          // TODO: fix hardcoded drinks and food transfer
+                          Navigator.pushNamed(
+                            context,
+                            "/adminmenuview",
+                            arguments: {
+                              'drinks': menu.values.elementAt(0),
+                              'food': menu.values.elementAt(1)
+                            },
+                          );
+                        },
                       )
                     ],
                   ),
-                  trailing: Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.yellow,
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          IconButton(
-                            alignment: Alignment.bottomCenter,
-                            icon: Icon(Icons.arrow_forward_ios),
-                            color: Colors.black,
-                            onPressed: () {
-                              print("You pressed the" +
-                                  restaurantName +
-                                  " button");
-
-                              // TODO: fix hardcoded drinks and food transfer
-                              Navigator.pushNamed(
-                                context,
-                                "/adminmenuview",
-                                arguments: {
-                                  'drinks': menu.values.elementAt(0),
-                                  'food': menu.values.elementAt(1)
-                                },
-                              );
-                            },
-                          )
-                        ],
-                      ))),
+                ),
+              ),
             ],
-          )),
-    ));
+          ),
+        ),
+      ),
+    );
   }
 }

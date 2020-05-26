@@ -13,6 +13,9 @@ class ShowMenuRoute extends StatelessWidget {
     completeMenu.addAll(menu['food']);
     completeMenu.addAll(menu['drinks']);
 
+    // Snackbar data for adding item
+    final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
+
     void testRun() {
       print(completeMenu.toString());
     }
@@ -47,56 +50,57 @@ class ShowMenuRoute extends StatelessWidget {
                 double value = completeMenu.values.elementAt(index).toDouble();
 
                 return Card(
-                    color: Colors.white,
-                    child: Column(
-                      children: [
-                        ListTile(
-                            //leading: widget.photo,
-                            title: Text(key,
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Row(
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        //leading: widget.photo,
+                        title: Text(key,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        subtitle: Row(
+                          children: <Widget>[
+                            Column(
                               children: <Widget>[
-                                Column(
-                                  children: <Widget>[
-                                    RichText(
-                                      text: TextSpan(
-                                          style: DefaultTextStyle.of(context)
-                                              .style,
-                                          children: <TextSpan>[
-                                            TextSpan(text: "Prijs: "),
-                                            TextSpan(
-                                              text: "€" + value.toString(),
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            )
-                                          ]),
-                                    ),
-                                  ],
+                                RichText(
+                                  text: TextSpan(
+                                      style: DefaultTextStyle.of(context).style,
+                                      children: <TextSpan>[
+                                        TextSpan(text: "Prijs: "),
+                                        TextSpan(
+                                          text: "€" + value.toString(),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ]),
                                 ),
                               ],
                             ),
-                            trailing: Container(
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.yellow,
-                                ),
-                                child: Column(
-                                  children: <Widget>[
-                                    IconButton(
-                                      alignment: Alignment.bottomCenter,
-                                      icon: Icon(Icons.add_shopping_cart),
-                                      color: Colors.black,
-                                      onPressed: () {
-                                        print("You pressed the " +
-                                            key +
-                                            " button");
-                                      },
-                                    )
-                                  ],
-                                ))),
-                      ],
-                    ));
+                          ],
+                        ),
+                        trailing: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.yellow,
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              IconButton(
+                                alignment: Alignment.bottomCenter,
+                                icon: Icon(Icons.add_shopping_cart),
+                                color: Colors.black,
+                                onPressed: () {
+                                  // TODO: actually add stuff to cart!
+                                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("Added $key to your cart.")));
+                                },
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
               },
             ),
           ],
