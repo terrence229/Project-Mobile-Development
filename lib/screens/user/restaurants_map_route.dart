@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-import 'package:geolocator/geolocator.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 
 class RestaurantRoute extends StatefulWidget {
@@ -39,22 +38,6 @@ class MapSampleState extends State<RestaurantRoute> {
 
 
 
-  /// Gets current location of user
-  void _getLocation() async {
-    var currentLocation = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-
-    // Updates state of markers to mirror user location back
-    setState(() {
-      _markers.clear();
-      final marker = Marker(
-        markerId: MarkerId("curr_loc"),
-        position: LatLng(currentLocation.latitude, currentLocation.longitude),
-        infoWindow: InfoWindow(title: 'Your Location'),
-      );
-      _markers["Current Location"] = marker;
-    });
-  }
 
   Marker testMarkerHvA = Marker(
       markerId: MarkerId("testMarkerHvA"),

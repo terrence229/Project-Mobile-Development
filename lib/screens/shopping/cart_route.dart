@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-/**
- * Order page
- * TODO: add list with dummy restaurants
- */
-class OrderRoute extends StatelessWidget {
+/// Order page
+/// TODO: add list with dummy restaurants
+class CartRoute extends StatelessWidget {
   static const String id = 'order_route';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text("Cart"),
       ),
       body: Center(
         child: Container(

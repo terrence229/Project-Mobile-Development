@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:woosttogo/components/navigator_button.dart';
 
-import 'start/register_route.dart';
-import 'user/item_menu_route.dart';
 
-/**
- * Splash screen
- * This page only displays the title and buttons
- */
+/// Splash screen
+/// This page only displays the title and buttons
 class LandingRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,14 +29,7 @@ class LandingRoute extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 100), // Spacer
-            NavigatorButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/map');
-              },
-              buttonTitle: "Map",
-            ),
-            SizedBox(height: 100), // Spacer
+            SizedBox(height: 250), // Spacer
             NavigatorButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/restaurantlist');

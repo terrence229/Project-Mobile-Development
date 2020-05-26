@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:woosttogo/screens/admin/add_data_route.dart';
 import 'package:woosttogo/screens/admin/show_list_route.dart';
-import 'package:woosttogo/screens/admin/show_menu_route.dart';
-import 'package:woosttogo/screens/user/restaurant_list_route.dart';
-import 'dart:convert';
+import 'package:woosttogo/screens/shopping/show_menu_route.dart';
+import 'package:woosttogo/screens/shopping/restaurant_list_route.dart';
+import 'package:woosttogo/screens/shopping/cart_route.dart';
 
 import 'screens/start/login_route.dart';
 import 'screens/start/register_route.dart';
 
 import 'screens/landing_route.dart';
-import 'screens/user/item_menu_route.dart';
-import 'screens/user/item_overview_route.dart';
 
-import 'screens/user/order_route.dart';
 
-import 'screens/user/restaurants_route.dart';
+
+import 'screens/user/restaurants_map_route.dart';
 
 // Startingpoint of app, do not touch!
 void main() => runApp(MainApp());
@@ -34,7 +31,7 @@ class MainApp extends StatelessWidget {
         "/login": (context) => LoginRoute(),
         "/map": (context) => RestaurantRoute(),
         "/restaurantlist": (context) => RestaurantListRoute(),
-        "/itemmenu": (context) => ItemMenu(),
+        "/cart": (context) => CartRoute(),
         "/adminlist": (context) => ListRoute(), // admin / testing
         "/admin": (context) => AddDataRoute(), // admin / testing
         '/adminmenuview': (context) => ShowMenuRoute(), // admin / testing

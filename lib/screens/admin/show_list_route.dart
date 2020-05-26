@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:woosttogo/components/data_list.dart';
 
 class ListRoute extends StatefulWidget {
   @override

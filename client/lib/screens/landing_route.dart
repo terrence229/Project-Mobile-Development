@@ -5,10 +5,8 @@ import 'register_route.dart';
 import 'login_route.dart';
 import 'item_menu_route.dart';
 
-/**
- * Splash screen
- * This page only displays the title and buttons:w
- */
+/// Splash screen
+/// This page only displays the title and buttons:w
 class LandingRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

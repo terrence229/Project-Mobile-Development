@@ -24,6 +24,17 @@ class ShowMenuRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("List View Route > Menu"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.shopping_cart,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, "/cart");
+            },
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -33,15 +44,14 @@ class ShowMenuRoute extends StatelessWidget {
               itemCount: completeMenu.length, // TODO: add food size as well
               itemBuilder: (BuildContext context, int index) {
                 String key = completeMenu.keys.elementAt(index);
-                double value =
-                    completeMenu.values.elementAt(index).toDouble();
+                double value = completeMenu.values.elementAt(index).toDouble();
 
                 return Card(
                     color: Colors.white,
                     child: Column(
                       children: [
                         ListTile(
-                          //leading: widget.photo,
+                            //leading: widget.photo,
                             title: Text(key,
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             subtitle: Row(
@@ -50,14 +60,16 @@ class ShowMenuRoute extends StatelessWidget {
                                   children: <Widget>[
                                     RichText(
                                       text: TextSpan(
-                                          style: DefaultTextStyle.of(context).style,
+                                          style: DefaultTextStyle.of(context)
+                                              .style,
                                           children: <TextSpan>[
                                             TextSpan(text: "Prijs: "),
-                                            TextSpan(text: "€"+value.toString(), style: TextStyle(
-                                                fontWeight: FontWeight.bold),
+                                            TextSpan(
+                                              text: "€" + value.toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
                                             )
-                                          ]
-                                      ),
+                                          ]),
                                     ),
                                   ],
                                 ),
@@ -73,19 +85,18 @@ class ShowMenuRoute extends StatelessWidget {
                                   children: <Widget>[
                                     IconButton(
                                       alignment: Alignment.bottomCenter,
-                                      icon: Icon(Icons.arrow_forward_ios),
+                                      icon: Icon(Icons.add_shopping_cart),
                                       color: Colors.black,
                                       onPressed: () {
-                                        print("You pressed the " + key + " button");
+                                        print("You pressed the " +
+                                            key +
+                                            " button");
                                       },
                                     )
                                   ],
-                                )
-                            )
-                        ),
+                                ))),
                       ],
-                    )
-                );
+                    ));
               },
             ),
           ],

@@ -3,7 +3,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:woosttogo/screens/item_menu_route.dart';
 
 /// Used to get data from backend
 /// All requests are sent using the application/json header
@@ -35,7 +34,7 @@ class NetworkHelper {
     if (response.statusCode == 200) {
       return response.body; // Contains the JWT
     } else {
-      print(response.statusCode);
+      return response.statusCode.toString();
     }
   }
 
@@ -54,7 +53,7 @@ class NetworkHelper {
     if (response.statusCode == 201) {
       return response.body; // Contains the JWT
     } else {
-      print(response.statusCode);
+      return response.statusCode.toString();
     }
   }
 
