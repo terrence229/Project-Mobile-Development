@@ -32,6 +32,8 @@ class MainApp extends StatelessWidget {
         "/map": (context) => RestaurantRoute(),
         "/restaurantlist": (context) => RestaurantListRoute(),
         "/cart": (context) => CartRoute(),
+        "/itemoverview": (context) => ItemOverviewRoute(),
+        //"/itemmenu": (context) => ItemMenu(),
         "/adminlist": (context) => ListRoute(), // admin / testing
         "/admin": (context) => AddDataRoute(), // admin / testing
         '/adminmenuview': (context) => ShowMenuRoute(), // admin / testing
