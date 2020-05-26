@@ -297,9 +297,9 @@ PODS:
     - Flutter
   - flutter_secure_storage (3.3.1):
     - Flutter
-  - geolocator (5.3.0):
+  - geolocator (5.3.1):
     - Flutter
-  - google_api_availability (2.0.3):
+  - google_api_availability (2.0.4):
     - Flutter
   - google_maps_flutter (0.0.1):
     - Flutter
@@ -502,8 +502,8 @@ SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_plugin_android_lifecycle: dc0b544e129eebb77a6bfb1239d4d1c673a60a35
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
-  geolocator: 7cdcf71180b80913b3cd84ab715d3b5365b378af
-  google_api_availability: 526574c9a5a0ae541e18c65f98e47afc11f53c8b
+  geolocator: 460cc8e850b616f8c0e90944c86517d91ccbb686
+  google_api_availability: 15fa42a8cd83c0a6738507ffe6e87096f12abcb8
   google_maps_flutter: df4e7de95264aa0a2f11aac0fc7e313acb8ffc7e
   GoogleAppMeasurement: 4c644d86835d827bab30ab6aabb9ecaf1f500735
   GoogleDataTransport: f6f8eba931df03ebd2232ff4645aa85f8f47b5ab
@@ -519,7 +519,7 @@ SPEC CHECKSUMS:
   location_web: b94e7433cfe28c0f7c8923c2ee482824b32e55a7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
   shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef

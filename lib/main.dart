@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:woosttogo/screens/admin/add_data_route.dart';
-import 'package:woosttogo/screens/admin/show_list_route.dart';
-import 'package:woosttogo/screens/admin/show_menu_route.dart';
-import 'package:woosttogo/screens/user/restaurant_list_route.dart';
-import 'dart:convert';
+import 'package:woosttogo/screens/shopping/restaurant_list_route.dart';
+import 'package:woosttogo/screens/shopping/menu_list_route.dart';
+
+import 'package:woosttogo/screens/shopping/cart_route.dart';
+import 'package:woosttogo/screens/shopping/quantity_route.dart';
 
 import 'screens/start/login_route.dart';
 import 'screens/start/register_route.dart';
 
 import 'screens/landing_route.dart';
-import 'screens/user/item_menu_route.dart';
-import 'screens/user/item_overview_route.dart';
 
-import 'screens/user/order_route.dart';
 
-import 'screens/user/restaurants_route.dart';
+
+import 'screens/user/maps_restaurant_route.dart';
 
 // Startingpoint of app, do not touch!
 void main() => runApp(MainApp());
@@ -34,11 +32,10 @@ class MainApp extends StatelessWidget {
         "/login": (context) => LoginRoute(),
         "/map": (context) => RestaurantRoute(),
         "/restaurantlist": (context) => RestaurantListRoute(),
+        "/cart": (context) => CartRoute(),
         "/itemoverview": (context) => ItemOverviewRoute(),
-        //"/itemmenu": (context) => ItemMenu(),
-        "/adminlist": (context) => ListRoute(), // admin / testing
+        "/itemmenu": (context) => ShowMenuRoute(),
         "/admin": (context) => AddDataRoute(), // admin / testing
-        '/adminmenuview': (context) => ShowMenuRoute(), // admin / testing
       },
     );
   }

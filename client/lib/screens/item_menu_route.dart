@@ -1,8 +1,6 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'item_overview_route.dart';
-import 'package:woosttogo/services/networking.dart';
 
 class ItemMenu extends StatelessWidget{
   @override

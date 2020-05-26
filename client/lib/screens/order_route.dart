@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-/**
- * Order page
- * TODO: add list with dummy restaurants
- */
+/// Order page
+/// TODO: add list with dummy restaurants
 class OrderRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
