@@ -165,7 +165,7 @@ class RestaurantCard extends StatelessWidget {
                           // TODO: fix hardcoded drinks and food transfer
                           Navigator.pushNamed(
                             context,
-                            "/adminmenuview",
+                            "/itemmenu",
                             arguments: {
                               'drinks': menu.values.elementAt(0),
                               'food': menu.values.elementAt(1)

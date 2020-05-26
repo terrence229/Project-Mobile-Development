@@ -16,14 +16,6 @@ class ShowMenuRoute extends StatelessWidget {
     // Snackbar data for adding item
     final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
 
-    void testRun() {
-      print(completeMenu.toString());
-    }
-
-    int drinksSize = menu["drinks"].length;
-    int foodSize = menu["food"].length;
-
-    testRun();
     return Scaffold(
       appBar: AppBar(
         title: Text("List View Route > Menu"),
@@ -90,8 +82,19 @@ class ShowMenuRoute extends StatelessWidget {
                                 icon: Icon(Icons.add_shopping_cart),
                                 color: Colors.black,
                                 onPressed: () {
+                                  // TODO: cart
+                                  Navigator.pushNamed(
+                                    context,
+                                    "/itemoverview",
+                                    arguments: {
+                                      'itemName': key,
+                                      'price': value.toString()
+                                    },
+                                  );
                                   // TODO: actually add stuff to cart!
-                                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("Added $key to your cart.")));
+                                  Scaffold.of(context).showSnackBar(SnackBar(
+                                      content:
+                                          Text("Added $key to your cart.")));
                                 },
                               )
                             ],
