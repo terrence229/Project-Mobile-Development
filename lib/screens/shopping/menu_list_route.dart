@@ -83,14 +83,15 @@ class ShowMenuRoute extends StatelessWidget {
                                 color: Colors.black,
                                 onPressed: () {
                                   // TODO: cart
-                                  Navigator.pushNamed(
-                                    context,
-                                    "/itemoverview",
-                                    arguments: {
-                                      'itemName': key,
-                                      'price': value.toString()
-                                    },
-                                  );
+                                  
+                                  // Navigator.pushNamed(
+                                  //   context,
+                                  //   "/itemoverview",
+                                  //   arguments: {
+                                  //     'itemName': key,
+                                  //     'price': value.toString()
+                                  //   },
+                                  // );
                                   // TODO: actually add stuff to cart!
                                   Scaffold.of(context).showSnackBar(SnackBar(
                                       content:

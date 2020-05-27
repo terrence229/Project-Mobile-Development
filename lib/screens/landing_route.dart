@@ -31,6 +31,7 @@ class LandingRoute extends StatelessWidget {
             ),
             SizedBox(height: 250), // Spacer
             NavigatorButton(
+              
               onPressed: () {
                 Navigator.pushNamed(context, '/restaurantlist');
               },
