@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import 'package:woosttogo/models/item.dart';
 import 'dart:collection';
 
-class CartData extends ChangeNotifier {
+class Cart extends ChangeNotifier {
   List<Item> _items = [
     Item(name: 'Big Mac', price: 2.0),
     Item(name: 'Vanilla Milkshake', price: 2.5),
@@ -24,6 +25,9 @@ class CartData extends ChangeNotifier {
     notifyListeners();
   }
 
+  String get helloWorld {
+    return "Hello, World!";
+  }
 
   void deleteItem(Item item) {
     _items.remove(item);

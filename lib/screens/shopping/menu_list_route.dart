@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:woosttogo/models/cart.dart';
 
 class ShowMenuRoute extends StatelessWidget {
   final Map<String, dynamic> menu;
@@ -13,12 +15,11 @@ class ShowMenuRoute extends StatelessWidget {
     completeMenu.addAll(menu['food']);
     completeMenu.addAll(menu['drinks']);
 
-    // Snackbar data for adding item
-    final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("List View Route > Menu"),
+        // title: Text("List View Route > Menu"),
+        title: Text('${Provider.of<Cart>(context).helloWorld}'),
         actions: <Widget>[
           IconButton(
             icon: Icon(

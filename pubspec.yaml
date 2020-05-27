@@ -14,11 +14,12 @@ dependencies:
   cupertino_icons: ^0.1.2
   requests: ^3.1.0
   flutter_secure_storage: ^3.3.1+1
-  firebase_core: ^0.4.4+3
-  cloud_firestore: ^0.13.5
-  firebase_auth: ^0.16.0
+  firebase_core: ^0.4.4+3 # Used for Firebase
+  cloud_firestore: ^0.13.5 # Used for Firebase
+  firebase_auth: ^0.16.0 # Used for Firebase
   google_maps_flutter: ^0.5.25+2
   maps_launcher: ^1.2.0
+  provider: ^4.1.2 # Used for state management
   location: ^3.0.0
 
 dev_dependencies:
