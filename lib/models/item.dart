@@ -2,6 +2,7 @@
 class Item {
   final String name;
   final double price;
+  int quantity;
 
-  Item({this.name, this.price});
+  Item({this.name, this.price, this.quantity});
 }

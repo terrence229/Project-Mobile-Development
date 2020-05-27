@@ -56,15 +56,16 @@ class ShowMenuRoute extends StatelessWidget {
                               children: <Widget>[
                                 RichText(
                                   text: TextSpan(
-                                      style: DefaultTextStyle.of(context).style,
-                                      children: <TextSpan>[
-                                        TextSpan(text: "Prijs: "),
-                                        TextSpan(
-                                          text: "€" + value.toString(),
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ]),
+                                    style: DefaultTextStyle.of(context).style,
+                                    children: <TextSpan>[
+                                      TextSpan(text: "Prijs: "),
+                                      TextSpan(
+                                        text: "€" + value.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -83,18 +84,13 @@ class ShowMenuRoute extends StatelessWidget {
                                 icon: Icon(Icons.add_shopping_cart),
                                 color: Colors.black,
                                 onPressed: () {
-                                  // TODO: cart
-                                  Provider.of<Cart>(context, listen: false)
-                                      .addItem(key, value);
-                                  // Navigator.pushNamed(
-                                  //   context,
-                                  //   "/itemoverview",
-                                  //   arguments: {
-                                  //     'itemName': key,
-                                  //     'price': value.toString()
-                                  //   },
-                                  // );
-                                  // TODO: actually add stuff to cart!
+                                  // TODO: fix adding duplicates
+
+                                    Provider.of<Cart>(context, listen: false)
+                                        .addItem(key, value, 1);
+
+
+
                                   Scaffold.of(context).showSnackBar(SnackBar(
                                       content:
                                           Text("Added $key to your cart.")));

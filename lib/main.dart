@@ -7,6 +7,7 @@ import 'package:woosttogo/screens/shopping/menu_list_route.dart';
 
 import 'package:woosttogo/screens/shopping/cart_route.dart';
 import 'package:woosttogo/screens/shopping/quantity_route.dart';
+import 'package:woosttogo/screens/shopping/checkout_route.dart';
 
 import 'screens/start/login_route.dart';
 import 'screens/start/register_route.dart';
@@ -37,6 +38,7 @@ class MainApp extends StatelessWidget {
           "/cart": (context) => CartRoute(),
           "/itemoverview": (context) => ItemOverviewRoute(),
           "/itemmenu": (context) => ShowMenuRoute(),
+          "/checkout": (context) => CheckoutRoute(),
           "/admin": (context) => AddDataRoute(), // admin / testing
         },
       ),

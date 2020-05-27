@@ -18,8 +18,7 @@ class CartRoute extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = cart.items[index];
                 return ItemTile(
-                  name: item.name,
-                  price: item.price,
+                  item: item,
                 );
               },
               itemCount: cart.itemCount,
