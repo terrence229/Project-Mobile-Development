@@ -10,6 +10,18 @@ class CartRoute extends StatelessWidget {
       appBar: AppBar(
         // title: Text("List View Route > Menu"),
         title: Text('Cart'), // TODO: display username
+        actions: <Widget>[
+          // TODO: make fancy button instead of icon
+          IconButton(
+            icon: Icon(
+              Icons.payment,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, "/checkout");
+            },
+          )
+        ],
       ),
       body: Center(
         child: Consumer<Cart>(
