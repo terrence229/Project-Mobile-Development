@@ -14,6 +14,13 @@ class Cart extends ChangeNotifier {
 
   /// Returns the total price of everything inside the cart.
   double get totalPrice {
+    _totalPrice = 0;
+
+    for (Item item in _items) {
+      double price = item.price * item.quantity;
+      _totalPrice += price;
+    }
+
     return _totalPrice;
   }
 
@@ -49,8 +56,6 @@ class Cart extends ChangeNotifier {
     final item = Item(name: newItemTitle, price: newPrice, quantity: quantity);
     _items.add(item);
 
-    _totalPrice += newPrice; // Updates total price
-
     notifyListeners();
   }
 
@@ -70,7 +75,11 @@ class Cart extends ChangeNotifier {
 
   void deleteItem(Item item) {
     _items.remove(item);
-    _totalPrice -= item.price; // Updates total price
     notifyListeners();
+  }
+
+  /// Empties the entire cart.
+  void emptyCart() {
+    _items = [];
   }
 }

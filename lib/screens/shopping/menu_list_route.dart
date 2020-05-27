@@ -6,12 +6,13 @@ import 'package:woosttogo/models/item.dart';
 class ShowMenuRoute extends StatelessWidget {
   final Map<String, dynamic> menu;
   ShowMenuRoute({Key key, this.menu}) : super(key: key);
-
-  @override
+  
+  @override 
   Widget build(BuildContext context) {
     // Gets menu from previous route.
     final Map<String, dynamic> menu = ModalRoute.of(context).settings.arguments;
-
+    
+    
     Map<String, dynamic> completeMenu = {};
     completeMenu.addAll(menu['food']);
     completeMenu.addAll(menu['drinks']);

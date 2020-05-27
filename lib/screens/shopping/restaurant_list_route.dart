@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import 'package:woosttogo/models/cart.dart';
 
 class RestaurantListRoute extends StatefulWidget {
   @override
@@ -99,6 +101,8 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Cart cart = Provider.of<Cart>(context, listen: false);
+
     return Center(
       child: Container(
         child: Card(
@@ -161,7 +165,7 @@ class RestaurantCard extends StatelessWidget {
                         color: Colors.black,
                         onPressed: () {
                           print("You pressed the" + restaurantName + " button");
-
+                          cart.emptyCart(); // Empties cart so no items carry from one restaurant to the other.
                           // TODO: fix hardcoded drinks and food transfer
                           Navigator.pushNamed(
                             context,
