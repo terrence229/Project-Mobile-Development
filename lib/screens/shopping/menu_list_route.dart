@@ -6,13 +6,12 @@ import 'package:woosttogo/models/item.dart';
 class ShowMenuRoute extends StatelessWidget {
   final Map<String, dynamic> menu;
   ShowMenuRoute({Key key, this.menu}) : super(key: key);
-  
-  @override 
+
+  @override
   Widget build(BuildContext context) {
     // Gets menu from previous route.
     final Map<String, dynamic> menu = ModalRoute.of(context).settings.arguments;
-    
-    
+        final Cart cart = Provider.of<Cart>(context, listen: false);
     Map<String, dynamic> completeMenu = {};
     completeMenu.addAll(menu['food']);
     completeMenu.addAll(menu['drinks']);
@@ -20,7 +19,7 @@ class ShowMenuRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // title: Text("List View Route > Menu"),
-        title: Text('${Provider.of<Cart>(context).itemCount}'),
+        title: Text('${cart.restaurantName}'),
         actions: <Widget>[
           IconButton(
             icon: Icon(

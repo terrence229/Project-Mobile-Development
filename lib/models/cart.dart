@@ -6,6 +6,7 @@ import 'dart:collection';
 class Cart extends ChangeNotifier {
   List<Item> _items = [];
   double _totalPrice = 0.0;
+  String restaurantName;
 
   /// Returns items in a listview.
   UnmodifiableListView<Item> get items {
@@ -45,6 +46,7 @@ class Cart extends ChangeNotifier {
 
     return quantity;
   }
+
 
   /// Returns length of items list.
   int get itemCount {

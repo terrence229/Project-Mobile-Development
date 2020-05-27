@@ -164,15 +164,17 @@ class RestaurantCard extends StatelessWidget {
                         icon: Icon(Icons.arrow_forward_ios),
                         color: Colors.black,
                         onPressed: () {
-                          print("You pressed the" + restaurantName + " button");
+                          print("You pressed the " + restaurantName + " button");
                           cart.emptyCart(); // Empties cart so no items carry from one restaurant to the other.
+                          cart.restaurantName = restaurantName;
                           // TODO: fix hardcoded drinks and food transfer
                           Navigator.pushNamed(
                             context,
                             "/itemmenu",
                             arguments: {
                               'drinks': menu.values.elementAt(0),
-                              'food': menu.values.elementAt(1)
+                              'food': menu.values.elementAt(1),
+                              'restaurant': restaurantName
                             },
                           );
                         },
