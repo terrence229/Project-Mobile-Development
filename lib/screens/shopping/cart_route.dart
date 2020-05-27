@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:woosttogo/models/cart.dart';
+import 'package:woosttogo/components/item_tile.dart';
 
-/// Cart page
-class CartRoute extends StatefulWidget {
-  @override
-  _CartRouteState createState() => _CartRouteState();
-}
-
-class _CartRouteState extends State<CartRoute> {
+class CartRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cart"),
+        // title: Text("List View Route > Menu"),
+        title: Text('Cart'), // TODO: display username
       ),
       body: Center(
-        child: Container(
-          child: Text('Hello, World!'),
+        child: Consumer<Cart>(
+          builder: (context, cart, child) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                final item = cart.items[index];
+                return ItemTile(
+                  name: item.name,
+                  price: item.price,
+                );
+              },
+              itemCount: cart.itemCount,
+            );
+          },
         ),
       ),
     );
