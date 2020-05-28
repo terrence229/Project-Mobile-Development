@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:woosttogo/models/cart.dart';
 import 'package:woosttogo/screens/admin/add_data_route.dart';
+import 'package:woosttogo/screens/shopping/payment_route.dart';
 import 'package:woosttogo/screens/shopping/restaurant_list_route.dart';
 import 'package:woosttogo/screens/shopping/menu_list_route.dart';
 
@@ -39,6 +40,7 @@ class MainApp extends StatelessWidget {
           "/itemoverview": (context) => ItemOverviewRoute(),
           "/itemmenu": (context) => ShowMenuRoute(),
           "/checkout": (context) => CheckoutRoute(),
+          "/payment": (context) => PaymentRoute(),
           "/admin": (context) => AddDataRoute(), // admin / testing
         },
       ),
