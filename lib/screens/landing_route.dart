@@ -40,14 +40,17 @@ class LandingRoute extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: MaterialButton(
                     minWidth: 300,
-                    color: Colors.yellow,
+                    color: Colors.black,
                     elevation: 5,
                     onPressed: () {
                       Navigator.pushNamed(context, '/restaurantlist');
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text('Quick Order'),
+                      child: Text(
+                        'Quick Order',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
                     ),
                   ),
                 ),
@@ -61,14 +64,16 @@ class LandingRoute extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: MaterialButton(
                     minWidth: 300,
-                    color: Colors.yellow,
+                    color: Colors.black,
                     elevation: 5,
                     onPressed: () {
                       Navigator.pushNamed(context, '/login');
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text('Login'),
+                      child: Text('Login',
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
                     ),
                   ),
                 ),
@@ -82,14 +87,17 @@ class LandingRoute extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: MaterialButton(
                     minWidth: 300,
-                    color: Colors.yellow,
+                    color: Colors.black,
                     elevation: 5,
                     onPressed: () {
                       Navigator.pushNamed(context, '/register');
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Text('Register'),
+                      child: Text(
+                        'Register',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
                     ),
                   ),
                 ),
