@@ -23,55 +23,57 @@ class _CheckoutRouteState extends State<CheckoutRoute> {
         title: Text('Payment'),
       ),
       body: Center(
-        child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-          Consumer<Cart>(
-            builder: (context, cart, child) {
-              return ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  final item = cart.items[index];
-                  return Material(
-                      child: Text(
-                          '€${item.price} voor ${item.quantity} ${item.name}'));
-                },
-                itemCount: cart.itemCount,
-              );
-            },
-          ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.only(bottom: 50.0),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: MaterialButton(
-                  color: Colors.yellow,
-                  elevation: 5,
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          child: PaymentRoute(),
-                        ),
-                      ),
-                    );
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Consumer<Cart>(
+              builder: (context, cart, child) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final item = cart.items[index];
+                    return Material(
+                        child: Text(
+                            '€${item.price} voor ${item.quantity} ${item.name}'));
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 42.0),
-                    child: Text('Pay: €${cart.totalPrice}'),
+                  itemCount: cart.itemCount,
+                );
+              },
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 50.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    color: Colors.yellow,
+                    elevation: 5,
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => SingleChildScrollView(
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
+                            child: PaymentRoute(),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 42.0),
+                      child: Text('Pay: €${cart.totalPrice}'),
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
-        ]),
+            )
+          ],
+        ),
       ),
     );
   }
 }
 
-class FinishPayment {
-}

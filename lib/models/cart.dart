@@ -13,7 +13,7 @@ class Cart extends ChangeNotifier {
     return UnmodifiableListView(_items);
   }
 
-  /// TODO: this is only for testing purposes!
+  // Gets the list of items in Sring format for storing in Firebase.
   List<String> get orderList {
     List<String> returnList = [];
 
