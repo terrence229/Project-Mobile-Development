@@ -13,6 +13,17 @@ class Cart extends ChangeNotifier {
     return UnmodifiableListView(_items);
   }
 
+  // Gets the list of items in Sring format for storing in Firebase.
+  List<String> get orderList {
+    List<String> returnList = [];
+
+    for(Item item in _items) {
+      returnList.add('${item.name} keer ${this.itemQuantity(item)}');
+    }
+
+    return returnList;
+  }
+
   /// Returns the total price of everything inside the cart.
   double get totalPrice {
     _totalPrice = 0;
@@ -46,7 +57,6 @@ class Cart extends ChangeNotifier {
 
     return quantity;
   }
-
 
   /// Returns length of items list.
   int get itemCount {

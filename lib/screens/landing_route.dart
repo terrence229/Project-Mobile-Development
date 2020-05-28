@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woosttogo/components/navigator_button.dart';
 
-
 /// Splash screen
 /// This page only displays the title and buttons
 class LandingRoute extends StatelessWidget {
@@ -9,8 +8,7 @@ class LandingRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFFE500), // FFE500 = woost color
-      // SafeArea puts widgets clear of system icons
-      body: SafeArea(
+      body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -19,38 +17,84 @@ class LandingRoute extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  "To Go", // Title text
-                  style: TextStyle(
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 56.0,
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    margin: EdgeInsets.only(top: 200),
+                    child: Text(
+                      "To Go", // Title text
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 56.0,
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 250), // Spacer
-            NavigatorButton(
-              
-              onPressed: () {
-                Navigator.pushNamed(context, '/restaurantlist');
-              },
-              buttonTitle: "Quick Order",
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 1.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    minWidth: 300,
+                    color: Colors.yellow,
+                    elevation: 5,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/restaurantlist');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text('Quick Order'),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            SizedBox(height: 20), // Spacer
-            NavigatorButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              buttonTitle: "Login",
+            Expanded(
+              flex: 0,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 5.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    minWidth: 300,
+                    color: Colors.yellow,
+                    elevation: 5,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text('Login'),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            SizedBox(height: 20),
-            NavigatorButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/register');
-              },
-              buttonTitle: "Register",
-            ),
+            Expanded(
+              flex: 0,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 50.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    minWidth: 300,
+                    color: Colors.yellow,
+                    elevation: 5,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register');
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text('Register'),
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
