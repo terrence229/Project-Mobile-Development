@@ -47,7 +47,7 @@ class RegisterRoute extends StatelessWidget {
                     final newUser = _auth.createUserWithEmailAndPassword(
                         email: emailText, password: passwordText);
                     if (newUser != null) {
-                      Navigator.pushNamed(context, '/map');
+                      Navigator.pushNamed(context, '/login');
                     }
                   } catch (e) {
                     print(e);

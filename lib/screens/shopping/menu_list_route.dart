@@ -12,6 +12,7 @@ class ShowMenuRoute extends StatelessWidget {
     // Gets menu from previous route.
     final Map<String, dynamic> menu = ModalRoute.of(context).settings.arguments;
         final Cart cart = Provider.of<Cart>(context, listen: false);
+        
     Map<String, dynamic> completeMenu = {};
     completeMenu.addAll(menu['food']);
     completeMenu.addAll(menu['drinks']);
@@ -93,7 +94,8 @@ class ShowMenuRoute extends StatelessWidget {
 
                                   Scaffold.of(context).showSnackBar(SnackBar(
                                       content:
-                                          Text("Added $key to your cart.")));
+                                          Text("Added $key to your cart."),
+                                          duration: Duration(seconds: 1),));
                                 },
                               )
                             ],

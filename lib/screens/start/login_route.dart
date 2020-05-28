@@ -14,7 +14,6 @@ class _LoginRouteState extends State<LoginRoute> {
   String emailText;
   String passwordText;
 
-  final storage = FlutterSecureStorage(); // TODO: move to networking tool
   FirebaseUser loggedInUser;
 
   @override
@@ -52,10 +51,10 @@ class _LoginRouteState extends State<LoginRoute> {
                 try {
                   final loginUser = await _auth.signInWithEmailAndPassword(
                       email: emailText, password: passwordText);
-
+                  
                   // Print email if user is logged in
                   if (loginUser != null) {
-                    print(loginUser.user.email);
+                     Navigator.pushNamed(context, "/restaurantlist");
                     if (loginUser.user.email == "admin@admin.nl") {
                       Navigator.pushNamed(context, "/admin");
                     }

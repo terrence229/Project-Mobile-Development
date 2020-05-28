@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:woosttogo/models/cart.dart';
+import 'package:woosttogo/utilities/order.dart';
 
 class PaymentRoute extends StatefulWidget {
   @override
@@ -8,6 +11,7 @@ class PaymentRoute extends StatefulWidget {
 class _PaymentRouteState extends State<PaymentRoute> {
   @override
   Widget build(BuildContext context) {
+    final Cart cart = Provider.of<Cart>(context, listen: false);
     return Container(
       color: Color(0xff757575), // Matches edge color to grayed out background.
       child: Container(
@@ -36,10 +40,11 @@ class _PaymentRouteState extends State<PaymentRoute> {
             ),
             MaterialButton(
               child: Text(
-                'Add',
+                'Pay',
               ),
               color: Colors.yellow,
               onPressed: () {
+                Order().sendOrder(cart);
                 Navigator.pop(context);
               },
             ),
