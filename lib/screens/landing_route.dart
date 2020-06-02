@@ -35,7 +35,7 @@ class LandingRoute extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                margin: EdgeInsets.only(bottom: 1.0),
+                margin: EdgeInsets.only(bottom: 30.0),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: MaterialButton(
@@ -46,7 +46,7 @@ class LandingRoute extends StatelessWidget {
                       Navigator.pushNamed(context, '/restaurantlist');
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
                         'Quick Order',
                         style: TextStyle(color: Colors.white, fontSize: 18.0),
@@ -59,7 +59,7 @@ class LandingRoute extends StatelessWidget {
             Expanded(
               flex: 0,
               child: Container(
-                margin: EdgeInsets.only(bottom: 5.0),
+                margin: EdgeInsets.only(bottom: 30.0),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: MaterialButton(
@@ -70,7 +70,7 @@ class LandingRoute extends StatelessWidget {
                       Navigator.pushNamed(context, '/login');
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text('Login',
                           style:
                               TextStyle(color: Colors.white, fontSize: 18.0)),
@@ -93,7 +93,7 @@ class LandingRoute extends StatelessWidget {
                       Navigator.pushNamed(context, '/register');
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: Text(
                         'Register',
                         style: TextStyle(color: Colors.white, fontSize: 18.0),

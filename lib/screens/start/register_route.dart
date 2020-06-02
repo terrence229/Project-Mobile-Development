@@ -41,19 +41,29 @@ class RegisterRoute extends StatelessWidget {
               },
             ),
             SizedBox(height: 100), // Spacer between input and button
-            NavigatorButton(
-                onPressed: () async {
-                  try {
-                    final newUser = _auth.createUserWithEmailAndPassword(
-                        email: emailText, password: passwordText);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, '/login');
-                    }
-                  } catch (e) {
-                    print(e);
+            MaterialButton(
+              minWidth: 300,
+              color: Colors.black,
+              elevation: 5,
+              onPressed: () async {
+                try {
+                  final newUser = _auth.createUserWithEmailAndPassword(
+                      email: emailText, password: passwordText);
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, '/login');
                   }
-                },
-                buttonTitle: "Register"),
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  'Inloggen',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ),
+              ),
+            ),
           ],
         ),
       ),

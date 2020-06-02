@@ -25,6 +25,10 @@ class _LoginRouteState extends State<LoginRoute> {
       body: Center(
         child: Column(
           children: <Widget>[
+            SizedBox(
+              height: 30,
+              child: Text('Email:', textScaleFactor: 1.5),
+            ),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -34,6 +38,8 @@ class _LoginRouteState extends State<LoginRoute> {
                 emailText = email;
               },
             ),
+            SizedBox(height: 20,),
+            Text('Wachtwoord:', textAlign: TextAlign.left,),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
@@ -44,17 +50,18 @@ class _LoginRouteState extends State<LoginRoute> {
                 passwordText = password;
               },
             ),
-            SizedBox(height: 100), // Spacer between input and button
-            NavigatorButton(
-              buttonTitle: "Login",
+            SizedBox(height: 100),
+            MaterialButton(
+              minWidth: 300,
+              color: Colors.black,
+              elevation: 5,
               onPressed: () async {
                 try {
                   final loginUser = await _auth.signInWithEmailAndPassword(
                       email: emailText, password: passwordText);
-                  
                   // Print email if user is logged in
                   if (loginUser != null) {
-                     Navigator.pushNamed(context, "/restaurantlist");
+                    Navigator.pushNamed(context, "/restaurantlist");
                     if (loginUser.user.email == "admin@admin.nl") {
                       Navigator.pushNamed(context, "/admin");
                     }
@@ -63,7 +70,14 @@ class _LoginRouteState extends State<LoginRoute> {
                   print(e);
                 }
               },
-            ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  'Inloggen',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ),
+              ),
+            ),// Spacer between input and button
           ],
         ),
       ),

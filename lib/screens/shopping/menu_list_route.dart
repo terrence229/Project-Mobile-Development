@@ -44,7 +44,7 @@ class ShowMenuRoute extends StatelessWidget {
                 double value = completeMenu.values.elementAt(index).toDouble();
 
                 return Card(
-                  color: Colors.white,
+                  color: Colors.yellowAccent,
                   child: Column(
                     children: [
                       ListTile(
@@ -76,7 +76,7 @@ class ShowMenuRoute extends StatelessWidget {
                           height: 100,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.yellow,
+                            color: Colors.white,
                           ),
                           child: Column(
                             children: <Widget>[

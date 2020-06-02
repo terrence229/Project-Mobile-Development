@@ -30,7 +30,7 @@ class _ItemTileState extends State<ItemTile> {
 
     return ListTile(
       title: Text(
-        '$name, prijs: €$price, hoeveel: $quantity',
+        '$name',
       ),
       subtitle: Row(
         children: <Widget>[

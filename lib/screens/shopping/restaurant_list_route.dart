@@ -105,8 +105,9 @@ class RestaurantCard extends StatelessWidget {
 
     return Center(
       child: Container(
+        height: 80,
         child: Card(
-          color: Colors.white,
+          color: Colors.yellowAccent,
           child: Column(
             children: [
               ListTile(
@@ -155,7 +156,7 @@ class RestaurantCard extends StatelessWidget {
                   height: 100,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.yellow,
+                    color: Colors.white,
                   ),
                   child: Column(
                     children: <Widget>[
