@@ -44,13 +44,14 @@ class ShowMenuRoute extends StatelessWidget {
                 double value = completeMenu.values.elementAt(index).toDouble();
 
                 return Card(
-                  color: Colors.yellowAccent,
+                  color: Color(0xFFFFE500),
                   child: Column(
                     children: [
                       ListTile(
                         //leading: widget.photo,
                         title: Text(key,
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style: TextStyle(fontWeight: FontWeight.bold,
+                            fontSize: 25.0)),
                         subtitle: Row(
                           children: <Widget>[
                             Column(
@@ -59,11 +60,16 @@ class ShowMenuRoute extends StatelessWidget {
                                   text: TextSpan(
                                     style: DefaultTextStyle.of(context).style,
                                     children: <TextSpan>[
-                                      TextSpan(text: "Prijs: "),
+                                      TextSpan(text: "Prijs: ",
+                                      style: TextStyle(
+                                        fontSize: 20.0
+                                      )),
                                       TextSpan(
                                         text: "€" + value.toString(),
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0,
+                                        ),
                                       )
                                     ],
                                   ),

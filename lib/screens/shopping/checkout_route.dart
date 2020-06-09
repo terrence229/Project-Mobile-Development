@@ -20,7 +20,7 @@ class _CheckoutRouteState extends State<CheckoutRoute> {
       // backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.yellow,
-        title: Text('Payment'),
+        title: Text('Bestellen'),
       ),
       body: Center(
         child: Column(
@@ -64,7 +64,7 @@ class _CheckoutRouteState extends State<CheckoutRoute> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 42.0),
-                      child: Text('Pay: €${cart.totalPrice}'),
+                      child: Text('Bestellen: €${cart.totalPrice}'),
                     ),
                   ),
                 ),

@@ -39,7 +39,7 @@ class _LoginRouteState extends State<LoginRoute> {
               },
             ),
             SizedBox(height: 20,),
-            Text('Wachtwoord:', textAlign: TextAlign.left,),
+            Text('Wachtwoord:', textAlign: TextAlign.left, textScaleFactor: 1.5,),
             TextField(
               obscureText: true,
               decoration: InputDecoration(

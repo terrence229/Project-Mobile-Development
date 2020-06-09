@@ -15,7 +15,7 @@ class _RestaurantListRouteState extends State<RestaurantListRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("List View Route"),
+        title: Text("Restaurants"),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -107,7 +107,7 @@ class RestaurantCard extends StatelessWidget {
       child: Container(
         height: 80,
         child: Card(
-          color: Colors.yellowAccent,
+          color: Color(0xFFFFE500),
           child: Column(
             children: [
               ListTile(

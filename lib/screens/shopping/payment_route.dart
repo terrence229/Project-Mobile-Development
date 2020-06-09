@@ -40,7 +40,10 @@ class _PaymentRouteState extends State<PaymentRoute> {
             ),
             MaterialButton(
               child: Text(
-                'Pay',
+                'Bestellen',
+                style: TextStyle(
+                  fontSize: 22.0,
+                ),
               ),
               color: Colors.yellow,
               onPressed: () {

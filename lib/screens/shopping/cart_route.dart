@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:woosttogo/models/cart.dart';
 import 'package:woosttogo/components/item_tile.dart';
+import 'package:woosttogo/utilities/order.dart';
 
 class CartRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //final Cart cart = Provider.of<Cart>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         // title: Text("List View Route > Menu"),
@@ -32,10 +34,10 @@ class CartRoute extends StatelessWidget {
                 return ItemTile(
                   item: item,
                 );
-              },
+                },
               itemCount: cart.itemCount,
             );
-          },
+            },
         ),
       ),
     );

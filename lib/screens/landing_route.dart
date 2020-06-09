@@ -43,7 +43,7 @@ class LandingRoute extends StatelessWidget {
                     color: Colors.black,
                     elevation: 5,
                     onPressed: () {
-                      Navigator.pushNamed(context, '/restaurantlist');
+                      Navigator.pushNamed(context,'/restaurantlist');
                     },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
