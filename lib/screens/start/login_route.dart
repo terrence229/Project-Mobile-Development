@@ -25,10 +25,6 @@ class _LoginRouteState extends State<LoginRoute> {
       body: Center(
         child: Column(
           children: <Widget>[
-            SizedBox(
-              height: 30,
-              child: Text('Email:', textScaleFactor: 1.5),
-            ),
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -38,8 +34,6 @@ class _LoginRouteState extends State<LoginRoute> {
                 emailText = email;
               },
             ),
-            SizedBox(height: 20,),
-            Text('Wachtwoord:', textAlign: TextAlign.left, textScaleFactor: 1.5,),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
