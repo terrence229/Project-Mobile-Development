@@ -45,7 +45,7 @@ class _PaymentRouteState extends State<PaymentRoute> {
                   fontSize: 22.0,
                 ),
               ),
-              color: Colors.yellow,
+              color: Color(0xFFFFE500),
               onPressed: () {
                 Order().sendOrder(cart);
                 Navigator.pop(context);
