@@ -31,28 +31,36 @@ class CartRoute extends StatelessWidget {
                 );
               },
             ),
-            MaterialButton(
-              color: Color(0xFFFFE500),
-              elevation: 5,
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) => SingleChildScrollView(
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          bottom:
-                          MediaQuery.of(context).viewInsets.bottom),
-                      child: PaymentRoute(),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 50.0),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MaterialButton(
+                    color: Colors.yellow,
+                    elevation: 5,
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => SingleChildScrollView(
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                MediaQuery.of(context).viewInsets.bottom),
+                            child: PaymentRoute(),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 42.0),
+                      child: Text('Bestellen: €${cart.totalPrice}', textScaleFactor: 1.25),
                     ),
                   ),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 42.0),
-                child: Text('Bestellen: €${cart.totalPrice}', textScaleFactor: 1.25),
+                ),
               ),
-            ),
+            )
           ],
         ),
       ),
