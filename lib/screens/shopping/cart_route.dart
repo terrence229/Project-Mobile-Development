@@ -5,10 +5,18 @@ import 'package:woosttogo/components/item_tile.dart';
 import 'package:woosttogo/screens/shopping/payment_route.dart';
 import 'package:woosttogo/utilities/order.dart';
 
-class CartRoute extends StatelessWidget {
+class CartRoute extends StatefulWidget{
+  @override
+  _CartRouteState createState() => _CartRouteState();
+}
+
+class _CartRouteState extends State<CartRoute> {
   @override
   Widget build(BuildContext context) {
-    final Cart cart = Provider.of<Cart>(context, listen: false);
+    final Cart cart = Provider.of<Cart>(context, listen: true);
+    final double toPay = cart.totalPrice;
+    print(cart.totalPrice.toString());
+
     return Scaffold(
       appBar: AppBar(
         // title: Text("List View Route > Menu"),
