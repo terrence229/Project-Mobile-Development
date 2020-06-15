@@ -25,6 +25,15 @@ class _RestaurantListRouteState extends State<RestaurantListRoute> {
             onPressed: () {
               Navigator.pushNamed(context, "/cart");
             },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.map,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, "/Map");
+            },
           )
         ],
       ),

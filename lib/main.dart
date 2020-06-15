@@ -5,10 +5,12 @@ import 'package:woosttogo/screens/admin/add_data_route.dart';
 import 'package:woosttogo/screens/shopping/payment_route.dart';
 import 'package:woosttogo/screens/shopping/restaurant_list_route.dart';
 import 'package:woosttogo/screens/shopping/menu_list_route.dart';
+import 'package:woosttogo/screens/user/maps_restaurant_route.dart';
 
 import 'package:woosttogo/screens/shopping/cart_route.dart';
 import 'package:woosttogo/screens/shopping/quantity_route.dart';
 import 'package:woosttogo/screens/shopping/checkout_route.dart';
+import 'package:woosttogo/utilities/Map_route.dart';
 
 import 'screens/start/login_route.dart';
 import 'screens/start/register_route.dart';
@@ -34,7 +36,7 @@ class MainApp extends StatelessWidget {
         routes: {
           "/register": (context) => RegisterRoute(),
           "/login": (context) => LoginRoute(),
-          "/map": (context) => RestaurantRoute(),
+          "/Map": (context) => MapRoute(),
           "/restaurantlist": (context) => RestaurantListRoute(),
           "/cart": (context) => CartRoute(),
           "/itemoverview": (context) => ItemOverviewRoute(),
